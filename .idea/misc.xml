@@ -6,6 +6,9 @@
         <entry key="app/src/main/res/drawable-v24/ic_baseline_live_tv_24.xml" value="0.157" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_movie_24.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_baseline_watchlist_24.xml" value="0.157" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_watchlist.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3098958333333333" />
       </map>
     </option>
