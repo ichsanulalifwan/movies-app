@@ -2,17 +2,15 @@
 buildscript {
     ext {
         // dependencies version
-        core_version = '1.7.0'
-        appcompat_version = '1.4.0'
+        core_version = '1.9.0'
+        appcompat_version = '1.5.1'
         material_version = '1.6.1'
         constraintlayout_version = '2.1.4'
         recyclerview_version = '1.2.1'
-        glide_version = '4.12.0'
+        glide_version = '4.13.1'
         viewpager2_version = '1.0.0'
         lifecycle_version = '2.5.1'
-        navigation_version = '2.3.5'
-        kotlin_coroutines_version = '1.4.3'
-        koin_version = '2.2.2'
+        navigation_version = '2.5.2'
         retrofit2_version = '2.9.0'
         okhttp3_version = '4.9.1'
         room_version = '2.4.3'
