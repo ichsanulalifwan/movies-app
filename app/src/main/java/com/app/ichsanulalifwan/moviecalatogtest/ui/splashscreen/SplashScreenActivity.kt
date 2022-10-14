@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatDelegate
 import com.app.ichsanulalifwan.moviecalatogtest.MainActivity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ActivitySplashScreenBinding
 
@@ -17,6 +18,9 @@ class SplashScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // prevent dark mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,6 +38,6 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TIME: Long = 2000
+        private const val TIME: Long = 1500L
     }
 }
