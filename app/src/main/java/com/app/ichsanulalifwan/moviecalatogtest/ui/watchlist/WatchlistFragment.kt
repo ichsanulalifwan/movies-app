@@ -1,4 +1,4 @@
-package com.app.ichsanulalifwan.moviecalatogtest.ui.notifications
+package com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentNotificationsBinding
+import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentWatchlistBinding
 
-class NotificationsFragment : Fragment() {
+class WatchlistFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FragmentWatchlistBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -23,9 +20,9 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+            ViewModelProvider(this).get(WatchlistViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentWatchlistBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications

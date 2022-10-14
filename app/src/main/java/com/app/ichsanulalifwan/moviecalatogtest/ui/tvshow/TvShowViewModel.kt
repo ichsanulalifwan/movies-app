@@ -1,10 +1,10 @@
-package com.app.ichsanulalifwan.moviecalatogtest.ui.dashboard
+package com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class TvShowViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

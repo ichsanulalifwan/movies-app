@@ -1,10 +1,10 @@
-package com.app.ichsanulalifwan.moviecalatogtest.ui.home
+package com.app.ichsanulalifwan.moviecalatogtest.ui.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class MovieViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
