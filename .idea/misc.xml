@@ -5,13 +5,15 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_baseline_live_tv_24.xml" value="0.157" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_movie_24.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_movie_select_24.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_baseline_live_tv_24.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_baseline_movie_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_watchlist_24.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.157" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17054595947265627" />
+        <entry key="app/src/main/res/drawable/ic_movie_selector.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_watchlist.xml" value="0.19610507246376813" />
