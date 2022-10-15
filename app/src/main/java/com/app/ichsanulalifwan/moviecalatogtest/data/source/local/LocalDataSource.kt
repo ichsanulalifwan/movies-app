@@ -40,13 +40,13 @@ class LocalDataSource private constructor(private val appDao: AppDao) {
 
 
     // Tv Show
-    fun getPopularTvShow(): DataSource.Factory<Int, TvShowAiringEntity> = appDao.getTvShow()
+    fun getPopularTvShow(): DataSource.Factory<Int, TvShowAiringEntity> = appDao.getAiringTvShow()
 
     fun getWishlistTvShow(): DataSource.Factory<Int, TvShowAiringEntity> = appDao.getWishlistTvShow()
 
     fun getDetailTvById(tvId: Int): LiveData<TvDetailWithGenre> = appDao.getDetailTvById(tvId)
 
-    fun insertTvShow(tvShow: List<TvShowAiringEntity>) = appDao.insertTvShow(tvShow)
+    fun insertTvShow(tvShow: List<TvShowAiringEntity>) = appDao.insertAiringTvShow(tvShow)
 
     fun setWishlistTvShow(tvShow: TvShowAiringEntity, newState: Boolean) {
         tvShow.isWishlist = newState

@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.*
 
 @Dao
 interface AppDao {
@@ -53,7 +51,29 @@ interface AppDao {
 
     // Tv Show
     @Query("SELECT * FROM tv_airing_entities")
-    fun getTvShow(): DataSource.Factory<Int, TvShowAiringEntity>
+    fun getAiringTvShow(): DataSource.Factory<Int, TvShowAiringEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAiringTvShow(tv: List<TvShowAiringEntity>)
+
+    @Query("SELECT * FROM tv_on_the_air_entities")
+    fun getOnTheAirTvShow(): DataSource.Factory<Int, TvShowOnTheAirEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertOnTheAirTvShow(tv: List<TvShowOnTheAirEntity>)
+
+    @Query("SELECT * FROM tv_popular_entities")
+    fun getPopularTvShow(): DataSource.Factory<Int, TvShowPopularEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPopularTvShow(tv: List<TvShowPopularEntity>)
+
+    @Query("SELECT * FROM tv_top_rated_entities")
+    fun getTopRatedTvShow(): DataSource.Factory<Int, TvShowTopRatedEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertTopRatedTvShow(tv: List<TvShowTopRatedEntity>)
+
 
     @Query("SELECT * FROM tv_airing_entities where isWishlist = 1")
     fun getWishlistTvShow(): DataSource.Factory<Int, TvShowAiringEntity>
@@ -61,9 +81,6 @@ interface AppDao {
     @Transaction
     @Query("SELECT * FROM tv_airing_entities WHERE tvId = :tvId")
     fun getDetailTvById(tvId: Int): LiveData<TvDetailWithGenre>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertTvShow(tv: List<TvShowAiringEntity>)
 
     @Update
     fun updateTvShow(tv: TvShowAiringEntity)
