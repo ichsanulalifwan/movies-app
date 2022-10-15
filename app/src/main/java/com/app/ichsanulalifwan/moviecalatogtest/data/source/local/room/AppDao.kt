@@ -18,7 +18,7 @@ interface AppDao {
     fun getMovies(): DataSource.Factory<Int, MovieEntity>
 
     @Query("SELECT * FROM movie_entities where isWishlist = 1")
-    fun getFavMovie(): DataSource.Factory<Int, MovieEntity>
+    fun getWishlistMovie(): DataSource.Factory<Int, MovieEntity>
 
     @Transaction
     @Query("SELECT * FROM movie_entities WHERE movieId = :movieId")
@@ -33,12 +33,13 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertMovieGenre(genre: List<MovieGenreEntity>)
 
+
     // Tv Show
     @Query("SELECT * FROM tv_entities")
     fun getTvShow(): DataSource.Factory<Int, TvShowEntity>
 
     @Query("SELECT * FROM tv_entities where isWishlist = 1")
-    fun getFavTvShow(): DataSource.Factory<Int, TvShowEntity>
+    fun getWishlistTvShow(): DataSource.Factory<Int, TvShowEntity>
 
     @Transaction
     @Query("SELECT * FROM tv_entities WHERE tvId = :tvId")
