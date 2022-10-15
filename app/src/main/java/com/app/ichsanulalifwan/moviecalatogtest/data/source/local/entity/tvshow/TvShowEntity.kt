@@ -16,7 +16,7 @@ data class TvShowEntity(
     var name: String,
 
     @ColumnInfo(name = "poster_path")
-    var posterPath: String,
+    var posterPath: String? = "",
 
     @ColumnInfo(name = "overview")
     var overview: String? = "",
