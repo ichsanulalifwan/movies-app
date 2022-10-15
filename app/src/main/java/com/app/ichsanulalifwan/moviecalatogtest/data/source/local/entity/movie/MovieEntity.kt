@@ -15,14 +15,14 @@ data class MovieEntity(
     @ColumnInfo(name = "title")
     var title: String,
 
+    @ColumnInfo(name = "poster_path")
+    var posterPath: String,
+
     @ColumnInfo(name = "release_date")
-    var releaseDate: String,
+    var releaseDate: String? = "",
 
     @ColumnInfo(name = "overview")
-    var overview: String,
-
-    @ColumnInfo(name = "poster_path")
-    var posterPath: String? = "",
+    var overview: String? = "",
 
     @ColumnInfo(name = "runtime")
     var runtime: Int? = 0,

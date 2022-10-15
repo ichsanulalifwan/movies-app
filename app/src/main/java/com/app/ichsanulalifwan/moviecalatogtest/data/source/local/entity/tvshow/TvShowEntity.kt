@@ -15,11 +15,11 @@ data class TvShowEntity(
     @ColumnInfo(name = "name")
     var name: String,
 
-    @ColumnInfo(name = "overview")
-    var overview: String,
-
     @ColumnInfo(name = "poster_path")
     var posterPath: String,
+
+    @ColumnInfo(name = "overview")
+    var overview: String? = "",
 
     @ColumnInfo(name = "number_of_episodes")
     var numberOfEpisodes: Int? = 0,
