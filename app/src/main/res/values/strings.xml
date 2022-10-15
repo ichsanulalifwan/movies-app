@@ -5,4 +5,5 @@
     <string name="title_watchlist">Watchlist</string>
     <string name="something_wrong">Oops.. something went wrong</string>
     <string name="empty_data">Your list is empty</string>
+    <string name="title_now_playing">Now Playing</string>
 </resources>
