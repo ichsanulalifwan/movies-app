@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentWatchlistBinding
 
 class WatchlistFragment : Fragment() {
@@ -19,12 +17,8 @@ class WatchlistFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(WatchlistViewModel::class.java)
-
         _binding = FragmentWatchlistBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

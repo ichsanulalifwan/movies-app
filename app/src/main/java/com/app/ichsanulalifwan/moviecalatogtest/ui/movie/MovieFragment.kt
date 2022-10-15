@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentMovieBinding
+import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewMovieNowPlayingBinding
+import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.adapter.MovieViewAdapter
+import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder.NowPlayingHolder
+import com.app.ichsanulalifwan.moviecalatogtest.viewmodel.ViewModelFactory
 
 class MovieFragment : Fragment() {
 
+    private lateinit var viewModel: MovieViewModel
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
 
@@ -19,17 +24,34 @@ class MovieFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(MovieViewModel::class.java)
-
         _binding = FragmentMovieBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        initViews()
+        return binding.root
+    }
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    private fun initViews() = with(binding) {
+
+        viewModel = ViewModelProvider(
+            this@MovieFragment,
+            ViewModelFactory.getInstance(requireContext())
+        )[MovieViewModel::class.java]
+
+        val movieViews = listOf(
+            NowPlayingHolder(
+                ViewMovieNowPlayingBinding.inflate(
+                    LayoutInflater.from(requireContext()),
+                    binding.root,
+                    false
+                ).root,
+                viewLifecycleOwner
+            )
+        )
+
+        rvMoviesContainer.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = MovieViewAdapter(movieViews, viewModel)
         }
-        return root
     }
 
     override fun onDestroyView() {
