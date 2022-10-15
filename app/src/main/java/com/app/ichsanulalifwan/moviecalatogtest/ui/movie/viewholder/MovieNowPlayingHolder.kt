@@ -7,12 +7,12 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewMovieNowPlayingBinding
 import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.MovieViewModel
-import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.adapter.MovieAdapter
-import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.adapter.MovieViewHolder
+import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.adapter.MovieNowPlayingAdapter
 
-class NowPlayingHolder(
+class MovieNowPlayingHolder(
     itemView: View,
     private val viewLifeCycleOwner: LifecycleOwner
 ) : MovieViewHolder(itemView) {
@@ -20,16 +20,17 @@ class NowPlayingHolder(
     private val binding = ViewMovieNowPlayingBinding.bind(itemView)
     private lateinit var context: Context
     private lateinit var viewModel: MovieViewModel
-    private lateinit var movieAdapter: MovieAdapter
+    private lateinit var movieNowPlayingAdapter: MovieNowPlayingAdapter
 
     override fun bind(context: Context, viewModel: MovieViewModel) {
         this.context = context
         this.viewModel = viewModel
 
-        movieAdapter = MovieAdapter()
+        movieNowPlayingAdapter = MovieNowPlayingAdapter()
         setupRecyclerView()
         showLoading(true)
         initData()
+        onMovieSelected()
     }
 
     private fun initData() {
@@ -39,7 +40,7 @@ class NowPlayingHolder(
                 when (movie) {
                     is Resource.Loading -> showLoading(true)
                     is Resource.Success -> {
-                        movieAdapter.submitList(movie.data)
+                        movieNowPlayingAdapter.submitList(movie.data)
                         showLoading(false)
                     }
                     is Resource.Error -> {
@@ -52,22 +53,22 @@ class NowPlayingHolder(
     }
 
     private fun setupRecyclerView() {
-        with(binding.rvNowPlaying) {
+        with(binding.rvMovieNowPlaying) {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             setHasFixedSize(true)
-            adapter = movieAdapter
+            adapter = movieNowPlayingAdapter
         }
     }
 
-//    private fun onMovieSelected() {
-//        movieAdapter.setOnItemClickListener(object : MovieAdapter.OnItemClickListener {
-//            override fun onMoviesClicked(movies: MovieEntity) {
+    private fun onMovieSelected() {
+        movieNowPlayingAdapter.setOnItemClickListener(object : MovieNowPlayingAdapter.OnItemClickListener {
+            override fun onMoviesClicked(movies: MovieNowPlayingEntity) {
 //                val intent = Intent(context, DetailMovieActivity::class.java)
 //                intent.putExtra(EXTRA_MOVIE_ID, movies.movieId)
 //                startActivity(intent)
-//            }
-//        })
-//    }
+            }
+        })
+    }
 
     private fun showLoading(state: Boolean) {
         if (state) binding.progressBar.visibility = View.VISIBLE

@@ -9,8 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentMovieBinding
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewMovieNowPlayingBinding
+import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewMoviePopularBinding
 import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.adapter.MovieViewAdapter
-import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder.NowPlayingHolder
+import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder.MovieNowPlayingHolder
+import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder.MoviePopularHolder
 import com.app.ichsanulalifwan.moviecalatogtest.viewmodel.ViewModelFactory
 
 class MovieFragment : Fragment() {
@@ -37,14 +39,22 @@ class MovieFragment : Fragment() {
         )[MovieViewModel::class.java]
 
         val movieViews = listOf(
-            NowPlayingHolder(
+            MovieNowPlayingHolder(
                 ViewMovieNowPlayingBinding.inflate(
                     LayoutInflater.from(requireContext()),
                     binding.root,
                     false
                 ).root,
                 viewLifecycleOwner
-            )
+            ),
+            MoviePopularHolder(
+                ViewMoviePopularBinding.inflate(
+                    LayoutInflater.from(requireContext()),
+                    binding.root,
+                    false
+                ).root,
+                viewLifecycleOwner
+            ),
         )
 
         rvMoviesContainer.apply {

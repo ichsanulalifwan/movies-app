@@ -28,6 +28,8 @@
         <entry key="app/src/main/res/layout/view_movie_upcoming.xml" value="0.44814364668251816" />
         <entry key="app/src/main/res/layout/view_tv_airing_today.xml" value="0.1189963078153306" />
         <entry key="app/src/main/res/layout/view_tv_on_the_air.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/view_tv_popular.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/view_tv_top_rated.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3098958333333333" />
       </map>
     </option>

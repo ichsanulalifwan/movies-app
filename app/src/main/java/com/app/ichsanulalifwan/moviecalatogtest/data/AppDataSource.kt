@@ -2,28 +2,28 @@ package com.app.ichsanulalifwan.moviecalatogtest.data
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
-import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieDetailWithGenre
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MoviePopularEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
 
 interface AppDataSource {
 
     // Movies
-    fun getNowPlayingMovie(): LiveData<Resource<PagedList<MovieEntity>>>
+    fun getNowPlayingMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>>
 
-    fun getPopularMovie(): LiveData<Resource<PagedList<MovieEntity>>>
+    fun getPopularMovie(): LiveData<Resource<PagedList<MoviePopularEntity>>>
 
-    fun getTopRatedMovie(): LiveData<Resource<PagedList<MovieEntity>>>
+    fun getTopRatedMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>>
 
-    fun getUpcomingMovie(): LiveData<Resource<PagedList<MovieEntity>>>
+    fun getUpcomingMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>>
 
     fun getDetailMovie(movieId: Int): LiveData<Resource<MovieDetailWithGenre>>
 
-    fun getWishlistMovie(): LiveData<PagedList<MovieEntity>>
+    fun getWishlistMovie(): LiveData<PagedList<MovieNowPlayingEntity>>
 
-    fun setWishlistMovie(movie: MovieEntity, state: Boolean)
+    fun setWishlistMovie(movie: MovieNowPlayingEntity, state: Boolean)
 
 
     // TV Shows

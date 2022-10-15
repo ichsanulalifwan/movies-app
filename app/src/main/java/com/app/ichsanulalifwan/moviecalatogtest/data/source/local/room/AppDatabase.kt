@@ -4,14 +4,20 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieGenreEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MoviePopularEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
 
 
 @Database(
-    entities = [MovieEntity::class, MovieGenreEntity::class, TvShowEntity::class, TvGenreEntity::class],
+    entities = [
+        MovieNowPlayingEntity::class,
+        MoviePopularEntity::class,
+        MovieGenreEntity::class,
+        TvShowEntity::class,
+        TvGenreEntity::class],
     version = 1,
     exportSchema = false
 )

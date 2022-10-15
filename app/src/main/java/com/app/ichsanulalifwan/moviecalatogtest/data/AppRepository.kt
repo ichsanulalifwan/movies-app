@@ -5,8 +5,9 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.LocalDataSource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieDetailWithGenre
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieGenreEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MoviePopularEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
@@ -25,43 +26,43 @@ class AppRepository(
 ) : AppDataSource {
 
     // Movies
-    override fun getNowPlayingMovie(): LiveData<Resource<PagedList<MovieEntity>>> {
+    override fun getNowPlayingMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<MovieEntity>, List<MovieResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<MovieEntity>> {
+            NetworkBoundResource<PagedList<MovieNowPlayingEntity>, List<MovieResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<MovieNowPlayingEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
                     .setPageSize(6)
                     .build()
-                return LivePagedListBuilder(localDataSource.getPopularMovie(), config).build()
+                return LivePagedListBuilder(localDataSource.getNowPlayingMovie(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<MovieEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<MovieNowPlayingEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<MovieResultsItem>>> =
                 remoteDataSource.getNowPlayingMovie()
 
             override fun saveCallResult(data: List<MovieResultsItem>) {
-                val movieList = ArrayList<MovieEntity>()
+                val movieList = ArrayList<MovieNowPlayingEntity>()
                 for (response in data) {
-                    val movie = MovieEntity(
+                    val movie = MovieNowPlayingEntity(
                         response.id,
                         response.title,
                         response.posterPath
                     )
                     movieList.add(movie)
                 }
-                localDataSource.insertMovie(movieList)
+                localDataSource.insertNowPlayingMovie(movieList)
             }
         }.asLiveData()
     }
 
-    override fun getPopularMovie(): LiveData<Resource<PagedList<MovieEntity>>> {
+    override fun getPopularMovie(): LiveData<Resource<PagedList<MoviePopularEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<MovieEntity>, List<MovieResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<MovieEntity>> {
+            NetworkBoundResource<PagedList<MoviePopularEntity>, List<MovieResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<MoviePopularEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
@@ -70,89 +71,89 @@ class AppRepository(
                 return LivePagedListBuilder(localDataSource.getPopularMovie(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<MovieEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<MoviePopularEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<MovieResultsItem>>> =
                 remoteDataSource.getPopularMovie()
 
             override fun saveCallResult(data: List<MovieResultsItem>) {
-                val movieList = ArrayList<MovieEntity>()
+                val movieList = ArrayList<MoviePopularEntity>()
                 for (response in data) {
-                    val movie = MovieEntity(
+                    val movie = MoviePopularEntity(
                         response.id,
                         response.title,
                         response.posterPath
                     )
                     movieList.add(movie)
                 }
-                localDataSource.insertMovie(movieList)
+                localDataSource.insertPopularMovie(movieList)
             }
         }.asLiveData()
     }
 
-    override fun getTopRatedMovie(): LiveData<Resource<PagedList<MovieEntity>>> {
+    override fun getTopRatedMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<MovieEntity>, List<MovieResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<MovieEntity>> {
+            NetworkBoundResource<PagedList<MovieNowPlayingEntity>, List<MovieResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<MovieNowPlayingEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
                     .setPageSize(6)
                     .build()
-                return LivePagedListBuilder(localDataSource.getPopularMovie(), config).build()
+                return LivePagedListBuilder(localDataSource.getNowPlayingMovie(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<MovieEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<MovieNowPlayingEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<MovieResultsItem>>> =
                 remoteDataSource.getTopRatedMovie()
 
             override fun saveCallResult(data: List<MovieResultsItem>) {
-                val movieList = ArrayList<MovieEntity>()
+                val movieList = ArrayList<MovieNowPlayingEntity>()
                 for (response in data) {
-                    val movie = MovieEntity(
+                    val movie = MovieNowPlayingEntity(
                         response.id,
                         response.title,
                         response.posterPath
                     )
                     movieList.add(movie)
                 }
-                localDataSource.insertMovie(movieList)
+                localDataSource.insertNowPlayingMovie(movieList)
             }
         }.asLiveData()
     }
 
-    override fun getUpcomingMovie(): LiveData<Resource<PagedList<MovieEntity>>> {
+    override fun getUpcomingMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<MovieEntity>, List<MovieResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<MovieEntity>> {
+            NetworkBoundResource<PagedList<MovieNowPlayingEntity>, List<MovieResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<MovieNowPlayingEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
                     .setPageSize(6)
                     .build()
-                return LivePagedListBuilder(localDataSource.getPopularMovie(), config).build()
+                return LivePagedListBuilder(localDataSource.getNowPlayingMovie(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<MovieEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<MovieNowPlayingEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<MovieResultsItem>>> =
                 remoteDataSource.getUpcomingMovie()
 
             override fun saveCallResult(data: List<MovieResultsItem>) {
-                val movieList = ArrayList<MovieEntity>()
+                val movieList = ArrayList<MovieNowPlayingEntity>()
                 for (response in data) {
-                    val movie = MovieEntity(
+                    val movie = MovieNowPlayingEntity(
                         response.id,
                         response.title,
                         response.posterPath
                     )
                     movieList.add(movie)
                 }
-                localDataSource.insertMovie(movieList)
+                localDataSource.insertNowPlayingMovie(movieList)
             }
         }.asLiveData()
     }
@@ -170,9 +171,9 @@ class AppRepository(
                 remoteDataSource.getDetailMovie(movieId)
 
             override fun saveCallResult(data: MovieDetailResponse) {
-                val movieData = ArrayList<MovieEntity>()
+                val movieData = ArrayList<MovieNowPlayingEntity>()
                 movieData.add(
-                    MovieEntity(
+                    MovieNowPlayingEntity(
                         movieId,
                         data.title,
                         data.posterPath,
@@ -181,7 +182,7 @@ class AppRepository(
                         data.runtime
                     )
                 )
-                localDataSource.insertMovie(movieData)
+                localDataSource.insertNowPlayingMovie(movieData)
 
                 val genreList = ArrayList<MovieGenreEntity>()
                 for (response in data.genres) {
@@ -197,7 +198,7 @@ class AppRepository(
         }.asLiveData()
     }
 
-    override fun getWishlistMovie(): LiveData<PagedList<MovieEntity>> {
+    override fun getWishlistMovie(): LiveData<PagedList<MovieNowPlayingEntity>> {
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
             .setInitialLoadSizeHint(6)
@@ -206,7 +207,7 @@ class AppRepository(
         return LivePagedListBuilder(localDataSource.getWishlistMovie(), config).build()
     }
 
-    override fun setWishlistMovie(movie: MovieEntity, state: Boolean) =
+    override fun setWishlistMovie(movie: MovieNowPlayingEntity, state: Boolean) =
         appExecutors.diskIO().execute {
             localDataSource.setWishlistMovie(movie, state)
         }

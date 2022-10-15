@@ -5,8 +5,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "movie_entities")
-data class MovieEntity(
+@Entity(tableName = "movie_nowplaying_entities")
+data class MovieNowPlayingEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "movieId")

@@ -5,7 +5,7 @@ import androidx.room.Relation
 
 data class MovieDetailWithGenre(
     @Embedded
-    var mMovie: MovieEntity,
+    var mMovie: MovieNowPlayingEntity,
 
     @Relation(parentColumn = "movieId", entityColumn = "movieId")
     var mGenre: List<MovieGenreEntity>

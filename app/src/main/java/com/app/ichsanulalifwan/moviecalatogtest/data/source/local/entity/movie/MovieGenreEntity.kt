@@ -7,7 +7,7 @@ import androidx.room.*
     tableName = "movie_genre_entities",
     primaryKeys = ["genreId", "movieId"],
     foreignKeys = [ForeignKey(
-        entity = MovieEntity::class,
+        entity = MovieNowPlayingEntity::class,
         parentColumns = ["movieId"],
         childColumns = ["movieId"]
     )],

@@ -1,4 +1,4 @@
-package com.app.ichsanulalifwan.moviecalatogtest.ui.movie.adapter
+package com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder
 
 import android.content.Context
 import android.view.View

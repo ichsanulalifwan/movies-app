@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.MovieViewModel
+import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder.MovieViewHolder
 
 class MovieViewAdapter(
     private val viewHolder: List<MovieViewHolder>,

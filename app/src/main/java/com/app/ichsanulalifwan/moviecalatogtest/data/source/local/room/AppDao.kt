@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieDetailWithGenre
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieGenreEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MoviePopularEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
@@ -14,21 +15,28 @@ import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.
 interface AppDao {
 
     // Movie
-    @Query("SELECT * FROM movie_entities")
-    fun getMovies(): DataSource.Factory<Int, MovieEntity>
-
-    @Query("SELECT * FROM movie_entities where isWishlist = 1")
-    fun getWishlistMovie(): DataSource.Factory<Int, MovieEntity>
-
-    @Transaction
-    @Query("SELECT * FROM movie_entities WHERE movieId = :movieId")
-    fun getDetailMovieById(movieId: Int): LiveData<MovieDetailWithGenre>
+    @Query("SELECT * FROM movie_nowplaying_entities")
+    fun getNowPlayingMovies(): DataSource.Factory<Int, MovieNowPlayingEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMovie(movie: List<MovieEntity>)
+    fun insertNowPlayingMovie(movie: List<MovieNowPlayingEntity>)
+
+    @Query("SELECT * FROM movie_popular_entities")
+    fun getPopularMovies(): DataSource.Factory<Int, MoviePopularEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPopularMovie(movie: List<MoviePopularEntity>)
+
+
+    @Query("SELECT * FROM movie_nowplaying_entities where isWishlist = 1")
+    fun getWishlistMovie(): DataSource.Factory<Int, MovieNowPlayingEntity>
+
+    @Transaction
+    @Query("SELECT * FROM movie_nowplaying_entities WHERE movieId = :movieId")
+    fun getDetailMovieById(movieId: Int): LiveData<MovieDetailWithGenre>
 
     @Update
-    fun updateMovie(movie: MovieEntity)
+    fun updateMovie(movie: MovieNowPlayingEntity)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertMovieGenre(genre: List<MovieGenreEntity>)
