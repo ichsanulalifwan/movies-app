@@ -1,6 +1,5 @@
-package com.dicoding.picodiploma.moviecatalogue3.data.source.remote.response
+package com.app.ichsanulalifwan.moviecalatogtest.data.source.remote.response
 
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.remote.response.GenresItem
 import com.google.gson.annotations.SerializedName
 
 data class TvShowDetailResponse(
