@@ -10,7 +10,7 @@ import androidx.room.Index
     tableName = "tv_genre_entities",
     primaryKeys = ["genreId", "tvId"],
     foreignKeys = [ForeignKey(
-        entity = TvShowEntity::class,
+        entity = TvShowAiringEntity::class,
         parentColumns = ["tvId"],
         childColumns = ["tvId"]
     )],

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 
 
 @Database(
@@ -16,7 +16,7 @@ import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.
         MovieTopRatedEntity::class,
         MovieUpcomingEntity::class,
         MovieGenreEntity::class,
-        TvShowEntity::class,
+        TvShowAiringEntity::class,
         TvGenreEntity::class],
     version = 1,
     exportSchema = false

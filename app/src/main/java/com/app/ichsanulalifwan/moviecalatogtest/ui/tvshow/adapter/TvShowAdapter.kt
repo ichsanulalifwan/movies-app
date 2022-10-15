@@ -6,12 +6,12 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.ichsanulalifwan.moviecalatogtest.R
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ItemListBinding
 import com.app.ichsanulalifwan.moviecalatogtest.utils.Constant.IMAGE_PREFIX
 import com.bumptech.glide.Glide
 
-class TvShowAdapter : PagedListAdapter<TvShowEntity, TvShowAdapter.TvShowViewHolder>(DIFF_CALLBACK)  {
+class TvShowAdapter : PagedListAdapter<TvShowAiringEntity, TvShowAdapter.TvShowViewHolder>(DIFF_CALLBACK)  {
 
     private lateinit var onItemClickListener: OnItemClickListener
 
@@ -37,7 +37,7 @@ class TvShowAdapter : PagedListAdapter<TvShowEntity, TvShowAdapter.TvShowViewHol
     inner class TvShowViewHolder(private val binding: ItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(tvShow: TvShowEntity) {
+        fun bind(tvShow: TvShowAiringEntity) {
             with(binding) {
                 itemView.setOnClickListener {
                     onItemClickListener.onMoviesClicked(tvShow)
@@ -53,16 +53,16 @@ class TvShowAdapter : PagedListAdapter<TvShowEntity, TvShowAdapter.TvShowViewHol
     }
 
     interface OnItemClickListener {
-        fun onMoviesClicked(tvShow: TvShowEntity)
+        fun onMoviesClicked(tvShow: TvShowAiringEntity)
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TvShowEntity>() {
-            override fun areItemsTheSame(oldItem: TvShowEntity, newItem: TvShowEntity): Boolean {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TvShowAiringEntity>() {
+            override fun areItemsTheSame(oldItem: TvShowAiringEntity, newItem: TvShowAiringEntity): Boolean {
                 return oldItem.tvId == newItem.tvId
             }
 
-            override fun areContentsTheSame(oldItem: TvShowEntity, newItem: TvShowEntity): Boolean {
+            override fun areContentsTheSame(oldItem: TvShowAiringEntity, newItem: TvShowAiringEntity): Boolean {
                 return oldItem == newItem
             }
         }

@@ -6,7 +6,7 @@ import androidx.room.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 
 @Dao
 interface AppDao {
@@ -52,21 +52,21 @@ interface AppDao {
 
 
     // Tv Show
-    @Query("SELECT * FROM tv_entities")
-    fun getTvShow(): DataSource.Factory<Int, TvShowEntity>
+    @Query("SELECT * FROM tv_airing_entities")
+    fun getTvShow(): DataSource.Factory<Int, TvShowAiringEntity>
 
-    @Query("SELECT * FROM tv_entities where isWishlist = 1")
-    fun getWishlistTvShow(): DataSource.Factory<Int, TvShowEntity>
+    @Query("SELECT * FROM tv_airing_entities where isWishlist = 1")
+    fun getWishlistTvShow(): DataSource.Factory<Int, TvShowAiringEntity>
 
     @Transaction
-    @Query("SELECT * FROM tv_entities WHERE tvId = :tvId")
+    @Query("SELECT * FROM tv_airing_entities WHERE tvId = :tvId")
     fun getDetailTvById(tvId: Int): LiveData<TvDetailWithGenre>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertTvShow(tv: List<TvShowEntity>)
+    fun insertTvShow(tv: List<TvShowAiringEntity>)
 
     @Update
-    fun updateTvShow(tv: TvShowEntity)
+    fun updateTvShow(tv: TvShowAiringEntity)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertTvGenre(genre: List<TvGenreEntity>)

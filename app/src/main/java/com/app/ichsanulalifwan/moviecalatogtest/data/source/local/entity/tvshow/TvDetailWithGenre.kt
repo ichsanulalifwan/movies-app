@@ -5,7 +5,7 @@ import androidx.room.Relation
 
 data class TvDetailWithGenre(
     @Embedded
-    var mTv: TvShowEntity,
+    var mTv: TvShowAiringEntity,
 
     @Relation(parentColumn = "tvId", entityColumn = "tvId")
     var mGenre: List<TvGenreEntity>

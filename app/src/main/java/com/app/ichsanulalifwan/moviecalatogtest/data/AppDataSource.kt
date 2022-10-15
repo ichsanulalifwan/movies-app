@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 
 interface AppDataSource {
 
@@ -25,17 +25,17 @@ interface AppDataSource {
 
 
     // TV Shows
-    fun getAiringTodayTvShow(): LiveData<Resource<PagedList<TvShowEntity>>>
+    fun getAiringTodayTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>>
 
-    fun getOnTheAirTvShow(): LiveData<Resource<PagedList<TvShowEntity>>>
+    fun getOnTheAirTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>>
 
-    fun getPopularTvShow(): LiveData<Resource<PagedList<TvShowEntity>>>
+    fun getPopularTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>>
 
-    fun getTopRatedTvShow(): LiveData<Resource<PagedList<TvShowEntity>>>
+    fun getTopRatedTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>>
 
     fun getDetailTvShow(tvId: Int): LiveData<Resource<TvDetailWithGenre>>
 
-    fun getWishlistTvShow(): LiveData<PagedList<TvShowEntity>>
+    fun getWishlistTvShow(): LiveData<PagedList<TvShowAiringEntity>>
 
-    fun setWishlistTvShow(tv: TvShowEntity, state: Boolean)
+    fun setWishlistTvShow(tv: TvShowAiringEntity, state: Boolean)
 }

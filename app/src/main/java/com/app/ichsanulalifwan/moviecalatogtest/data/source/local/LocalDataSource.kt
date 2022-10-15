@@ -5,7 +5,7 @@ import androidx.paging.DataSource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.room.AppDao
 
 class LocalDataSource private constructor(private val appDao: AppDao) {
@@ -40,15 +40,15 @@ class LocalDataSource private constructor(private val appDao: AppDao) {
 
 
     // Tv Show
-    fun getPopularTvShow(): DataSource.Factory<Int, TvShowEntity> = appDao.getTvShow()
+    fun getPopularTvShow(): DataSource.Factory<Int, TvShowAiringEntity> = appDao.getTvShow()
 
-    fun getWishlistTvShow(): DataSource.Factory<Int, TvShowEntity> = appDao.getWishlistTvShow()
+    fun getWishlistTvShow(): DataSource.Factory<Int, TvShowAiringEntity> = appDao.getWishlistTvShow()
 
     fun getDetailTvById(tvId: Int): LiveData<TvDetailWithGenre> = appDao.getDetailTvById(tvId)
 
-    fun insertTvShow(tvShow: List<TvShowEntity>) = appDao.insertTvShow(tvShow)
+    fun insertTvShow(tvShow: List<TvShowAiringEntity>) = appDao.insertTvShow(tvShow)
 
-    fun setWishlistTvShow(tvShow: TvShowEntity, newState: Boolean) {
+    fun setWishlistTvShow(tvShow: TvShowAiringEntity, newState: Boolean) {
         tvShow.isWishlist = newState
         appDao.updateTvShow(tvShow)
     }

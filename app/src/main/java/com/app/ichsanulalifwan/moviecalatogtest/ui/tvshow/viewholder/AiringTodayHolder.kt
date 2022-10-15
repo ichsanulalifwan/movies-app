@@ -7,7 +7,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewTvAiringTodayBinding
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.TvShowViewModel
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.adapter.TvShowAdapter
@@ -62,7 +62,7 @@ class AiringTodayHolder(
 
     private fun onMovieSelected() {
         tvShowAdapter.setOnItemClickListener(object : TvShowAdapter.OnItemClickListener {
-            override fun onMoviesClicked(tvShow: TvShowEntity) {
+            override fun onMoviesClicked(tvShow: TvShowAiringEntity) {
 //                val intent = Intent(context, DetailMovieActivity::class.java)
 //                intent.putExtra(EXTRA_MOVIE_ID, movies.movieId)
 //                startActivity(intent)

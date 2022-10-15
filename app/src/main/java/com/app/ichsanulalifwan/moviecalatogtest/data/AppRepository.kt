@@ -7,7 +7,7 @@ import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.LocalDataSourc
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.remote.RemoteDataSource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.remote.network.ApiResponse
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.remote.response.MovieDetailResponse
@@ -211,10 +211,10 @@ class AppRepository(
 
 
     // TV Shows
-    override fun getAiringTodayTvShow(): LiveData<Resource<PagedList<TvShowEntity>>> {
+    override fun getAiringTodayTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<TvShowEntity>> {
+            NetworkBoundResource<PagedList<TvShowAiringEntity>, List<TvShowResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<TvShowAiringEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
@@ -223,16 +223,16 @@ class AppRepository(
                 return LivePagedListBuilder(localDataSource.getPopularTvShow(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<TvShowEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<TvShowAiringEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<TvShowResultsItem>>> =
                 remoteDataSource.getAiringTodayTvShow()
 
             override fun saveCallResult(data: List<TvShowResultsItem>) {
-                val tvList = ArrayList<TvShowEntity>()
+                val tvList = ArrayList<TvShowAiringEntity>()
                 for (response in data) {
-                    val tvShow = TvShowEntity(
+                    val tvShow = TvShowAiringEntity(
                         response.id,
                         response.name,
                         response.posterPath
@@ -244,10 +244,10 @@ class AppRepository(
         }.asLiveData()
     }
 
-    override fun getOnTheAirTvShow(): LiveData<Resource<PagedList<TvShowEntity>>> {
+    override fun getOnTheAirTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<TvShowEntity>> {
+            NetworkBoundResource<PagedList<TvShowAiringEntity>, List<TvShowResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<TvShowAiringEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
@@ -256,16 +256,16 @@ class AppRepository(
                 return LivePagedListBuilder(localDataSource.getPopularTvShow(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<TvShowEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<TvShowAiringEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<TvShowResultsItem>>> =
                 remoteDataSource.getOnTheAirTvShow()
 
             override fun saveCallResult(data: List<TvShowResultsItem>) {
-                val tvList = ArrayList<TvShowEntity>()
+                val tvList = ArrayList<TvShowAiringEntity>()
                 for (response in data) {
-                    val tvShow = TvShowEntity(
+                    val tvShow = TvShowAiringEntity(
                         response.id,
                         response.name,
                         response.posterPath
@@ -277,10 +277,10 @@ class AppRepository(
         }.asLiveData()
     }
 
-    override fun getPopularTvShow(): LiveData<Resource<PagedList<TvShowEntity>>> {
+    override fun getPopularTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<TvShowEntity>> {
+            NetworkBoundResource<PagedList<TvShowAiringEntity>, List<TvShowResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<TvShowAiringEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
@@ -289,16 +289,16 @@ class AppRepository(
                 return LivePagedListBuilder(localDataSource.getPopularTvShow(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<TvShowEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<TvShowAiringEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<TvShowResultsItem>>> =
                 remoteDataSource.getPopularTvShow()
 
             override fun saveCallResult(data: List<TvShowResultsItem>) {
-                val tvList = ArrayList<TvShowEntity>()
+                val tvList = ArrayList<TvShowAiringEntity>()
                 for (response in data) {
-                    val tvShow = TvShowEntity(
+                    val tvShow = TvShowAiringEntity(
                         response.id,
                         response.name,
                         response.posterPath
@@ -310,10 +310,10 @@ class AppRepository(
         }.asLiveData()
     }
 
-    override fun getTopRatedTvShow(): LiveData<Resource<PagedList<TvShowEntity>>> {
+    override fun getTopRatedTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<TvShowEntity>> {
+            NetworkBoundResource<PagedList<TvShowAiringEntity>, List<TvShowResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<TvShowAiringEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
@@ -322,16 +322,16 @@ class AppRepository(
                 return LivePagedListBuilder(localDataSource.getPopularTvShow(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<TvShowEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<TvShowAiringEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<TvShowResultsItem>>> =
                 remoteDataSource.getTopRatedTvShow()
 
             override fun saveCallResult(data: List<TvShowResultsItem>) {
-                val tvList = ArrayList<TvShowEntity>()
+                val tvList = ArrayList<TvShowAiringEntity>()
                 for (response in data) {
-                    val tvShow = TvShowEntity(
+                    val tvShow = TvShowAiringEntity(
                         response.id,
                         response.name,
                         response.posterPath
@@ -356,9 +356,9 @@ class AppRepository(
                 remoteDataSource.getDetailTvShow(tvId)
 
             override fun saveCallResult(data: TvShowDetailResponse) {
-                val tvData = ArrayList<TvShowEntity>()
+                val tvData = ArrayList<TvShowAiringEntity>()
                 tvData.add(
-                    TvShowEntity(
+                    TvShowAiringEntity(
                         tvId,
                         data.name,
                         data.posterPath,
@@ -383,7 +383,7 @@ class AppRepository(
         }.asLiveData()
     }
 
-    override fun getWishlistTvShow(): LiveData<PagedList<TvShowEntity>> {
+    override fun getWishlistTvShow(): LiveData<PagedList<TvShowAiringEntity>> {
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
             .setInitialLoadSizeHint(6)
@@ -392,7 +392,7 @@ class AppRepository(
         return LivePagedListBuilder(localDataSource.getWishlistTvShow(), config).build()
     }
 
-    override fun setWishlistTvShow(tv: TvShowEntity, state: Boolean) =
+    override fun setWishlistTvShow(tv: TvShowAiringEntity, state: Boolean) =
         appExecutors.diskIO().execute {
             localDataSource.setWishlistTvShow(tv, state)
         }

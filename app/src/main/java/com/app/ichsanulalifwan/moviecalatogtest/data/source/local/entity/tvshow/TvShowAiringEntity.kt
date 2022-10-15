@@ -5,8 +5,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "tv_entities")
-data class TvShowEntity(
+@Entity(tableName = "tv_airing_entities")
+data class TvShowAiringEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "tvId")
