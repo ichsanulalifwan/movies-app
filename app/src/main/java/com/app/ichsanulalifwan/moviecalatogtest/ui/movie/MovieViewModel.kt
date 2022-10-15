@@ -7,6 +7,8 @@ import com.app.ichsanulalifwan.moviecalatogtest.data.AppRepository
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MoviePopularEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieTopRatedEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieUpcomingEntity
 
 class MovieViewModel(private val repository: AppRepository) : ViewModel() {
 
@@ -14,7 +16,7 @@ class MovieViewModel(private val repository: AppRepository) : ViewModel() {
 
     fun getPopularMovie(): LiveData<Resource<PagedList<MoviePopularEntity>>> = repository.getPopularMovie()
 
-    fun getTopRatedMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>> = repository.getTopRatedMovie()
+    fun getTopRatedMovie(): LiveData<Resource<PagedList<MovieTopRatedEntity>>> = repository.getTopRatedMovie()
 
-    fun getUpcomingMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>> = repository.getUpcomingMovie()
+    fun getUpcomingMovie(): LiveData<Resource<PagedList<MovieUpcomingEntity>>> = repository.getUpcomingMovie()
 }

@@ -3,10 +3,7 @@ package com.app.ichsanulalifwan.moviecalatogtest.data.source.local.room
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieDetailWithGenre
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieGenreEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MoviePopularEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
@@ -26,6 +23,18 @@ interface AppDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPopularMovie(movie: List<MoviePopularEntity>)
+
+    @Query("SELECT * FROM movie_toprated_entities")
+    fun getTopRatedMovies(): DataSource.Factory<Int, MovieTopRatedEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertTopRatedMovie(movie: List<MovieTopRatedEntity>)
+
+    @Query("SELECT * FROM movie_upcoming_entities")
+    fun getUpcomingMovies(): DataSource.Factory<Int, MovieUpcomingEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertUpcomingMovie(movie: List<MovieUpcomingEntity>)
 
 
     @Query("SELECT * FROM movie_nowplaying_entities where isWishlist = 1")

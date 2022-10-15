@@ -2,10 +2,7 @@ package com.app.ichsanulalifwan.moviecalatogtest.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieDetailWithGenre
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieGenreEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MoviePopularEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
@@ -22,6 +19,13 @@ class LocalDataSource private constructor(private val appDao: AppDao) {
 
     fun insertPopularMovie(movie: List<MoviePopularEntity>) = appDao.insertPopularMovie(movie)
 
+    fun getTopRatedMovie(): DataSource.Factory<Int, MovieTopRatedEntity> = appDao.getTopRatedMovies()
+
+    fun insertTopRatedMovie(movie: List<MovieTopRatedEntity>) = appDao.insertTopRatedMovie(movie)
+
+    fun getUpcomingMovies(): DataSource.Factory<Int, MovieUpcomingEntity> = appDao.getUpcomingMovies()
+
+    fun insertUpcomingMovie(movie: List<MovieUpcomingEntity>) = appDao.insertUpcomingMovie(movie)
 
     fun getWishlistMovie(): DataSource.Factory<Int, MovieNowPlayingEntity> = appDao.getWishlistMovie()
 

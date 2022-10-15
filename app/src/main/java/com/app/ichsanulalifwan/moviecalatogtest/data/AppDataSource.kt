@@ -2,9 +2,7 @@ package com.app.ichsanulalifwan.moviecalatogtest.data
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieDetailWithGenre
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MoviePopularEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
 
@@ -15,9 +13,9 @@ interface AppDataSource {
 
     fun getPopularMovie(): LiveData<Resource<PagedList<MoviePopularEntity>>>
 
-    fun getTopRatedMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>>
+    fun getTopRatedMovie(): LiveData<Resource<PagedList<MovieTopRatedEntity>>>
 
-    fun getUpcomingMovie(): LiveData<Resource<PagedList<MovieNowPlayingEntity>>>
+    fun getUpcomingMovie(): LiveData<Resource<PagedList<MovieUpcomingEntity>>>
 
     fun getDetailMovie(movieId: Int): LiveData<Resource<MovieDetailWithGenre>>
 

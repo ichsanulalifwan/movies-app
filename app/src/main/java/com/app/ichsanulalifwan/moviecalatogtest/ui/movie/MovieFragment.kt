@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentMovieBinding
-import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewMovieNowPlayingBinding
-import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewMoviePopularBinding
+import com.app.ichsanulalifwan.moviecalatogtest.databinding.*
 import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.adapter.MovieViewAdapter
 import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder.MovieNowPlayingHolder
 import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder.MoviePopularHolder
+import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder.MovieTopRatedHolder
+import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder.MovieUpcomingHolder
 import com.app.ichsanulalifwan.moviecalatogtest.viewmodel.ViewModelFactory
 
 class MovieFragment : Fragment() {
@@ -49,6 +49,22 @@ class MovieFragment : Fragment() {
             ),
             MoviePopularHolder(
                 ViewMoviePopularBinding.inflate(
+                    LayoutInflater.from(requireContext()),
+                    binding.root,
+                    false
+                ).root,
+                viewLifecycleOwner
+            ),
+            MovieTopRatedHolder(
+                ViewMovieTopRatedBinding.inflate(
+                    LayoutInflater.from(requireContext()),
+                    binding.root,
+                    false
+                ).root,
+                viewLifecycleOwner
+            ),
+            MovieUpcomingHolder(
+                ViewMovieUpcomingBinding.inflate(
                     LayoutInflater.from(requireContext()),
                     binding.root,
                     false
