@@ -9,4 +9,8 @@
     <string name="title_popular">What\'s Popular</string>
     <string name="title_top_rated">Top Rated</string>
     <string name="title_upcoming">Upcoming</string>
+    <string name="title_tvshow_airing_today">TV Airing Today</string>
+    <string name="title_tvshow_on_the_air">TV On The Air</string>
+    <string name="title_tvshow_popular">TV Popular</string>
+    <string name="title_tvshow_top_rated">TV Top Rated</string>
 </resources>
