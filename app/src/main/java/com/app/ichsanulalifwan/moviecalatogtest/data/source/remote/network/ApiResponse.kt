@@ -1,4 +1,4 @@
-package com.app.ichsanulalifwan.moviecalatogtest.data.network
+package com.app.ichsanulalifwan.moviecalatogtest.data.source.remote.network
 
 sealed class ApiResponse<out R> {
     data class Success<out T>(val data: T) : ApiResponse<T>()
