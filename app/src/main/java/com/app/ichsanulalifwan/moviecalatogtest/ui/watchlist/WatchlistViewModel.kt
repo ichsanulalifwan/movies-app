@@ -1,13 +1,15 @@
 package com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.PagedList
+import com.app.ichsanulalifwan.moviecalatogtest.data.AppRepository
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowEntity
 
-class WatchlistViewModel : ViewModel() {
+class WatchlistViewModel(private val repository: AppRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getWishlistMovie(): LiveData<PagedList<MovieEntity>> = repository.getWishlistMovie()
+
+    fun getWishlistTvShow(): LiveData<PagedList<TvShowEntity>> = repository.getWishlistTvShow()
 }

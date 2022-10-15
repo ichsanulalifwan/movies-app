@@ -1,13 +1,19 @@
 package com.app.ichsanulalifwan.moviecalatogtest.ui.movie
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.PagedList
+import com.app.ichsanulalifwan.moviecalatogtest.data.AppRepository
+import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieEntity
 
-class MovieViewModel : ViewModel() {
+class MovieViewModel(private val repository: AppRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getNowPlayingMovie(): LiveData<Resource<PagedList<MovieEntity>>> = repository.getNowPlayingMovie()
+
+    fun getPopularMovie(): LiveData<Resource<PagedList<MovieEntity>>> = repository.getPopularMovie()
+
+    fun getTopRatedMovie(): LiveData<Resource<PagedList<MovieEntity>>> = repository.getTopRatedMovie()
+
+    fun getUpcomingMovie(): LiveData<Resource<PagedList<MovieEntity>>> = repository.getUpcomingMovie()
 }
