@@ -6,4 +6,7 @@
     <string name="something_wrong">Oops.. something went wrong</string>
     <string name="empty_data">Your list is empty</string>
     <string name="title_now_playing">Now Playing</string>
+    <string name="title_popular">What\'s Popular</string>
+    <string name="title_top_rated">Top Rated</string>
+    <string name="title_upcoming">Upcoming</string>
 </resources>
