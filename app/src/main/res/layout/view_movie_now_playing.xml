@@ -12,7 +12,7 @@
         android:layout_marginStart="@dimen/default_margin_size"
         android:layout_marginTop="4dp"
         android:text="@string/title_now_playing"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:fontFamily="@font/be_vietnam_bold"
         app:layout_constraintStart_toStartOf="parent"
