@@ -51,8 +51,6 @@ class DetailTvShowActivity : AppCompatActivity() {
                             if (tvShow.data != null) {
                                 populateData(tvShow.data.mTv)
                                 getGenres(DataMapper.mapTvGenreEntityToModel(tvShow.data.mGenre))
-//                                setFavouriteState(tvShow.data.mTv.isFavorite)
-//                                onFavButtonClicked(tvShow.data.mTv)
                                 showLoading(false)
                             }
                         }

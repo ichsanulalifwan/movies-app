@@ -54,8 +54,6 @@ class DetailMovieActivity : AppCompatActivity() {
                             if (movie.data != null) {
                                 populateData(movie.data.mMovie)
                                 getGenres(DataMapper.mapMovieGenreEntityToModel(movie.data.mGenre))
-//                                setFavouriteState(movie.data.mMovie.isFavorite)
-//                                onFavButtonClicked(movie.data.mMovie)
                                 showLoading(false)
                             }
                         }
