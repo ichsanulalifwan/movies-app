@@ -29,10 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/be_vietnam_bold"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_posterMovie"
@@ -43,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_s"
+            android:fontFamily="@font/be_vietnam"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/tv_runtime"
@@ -56,6 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_m"
+            android:fontFamily="@font/be_vietnam"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_relase"
@@ -69,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_s"
+            android:fontFamily="@font/be_vietnam"
             android:text="@string/txt_minute"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -91,6 +94,19 @@
             app:layout_constraintTop_toBottomOf="@id/tv_relase"
             tools:listitem="@layout/item_genre" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_watchlist_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:backgroundTint="@color/light_black"
+            app:icon="@drawable/ic_baseline_watchlist_24"
+            app:iconGravity="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvGenres" />
+
         <TextView
             android:id="@+id/tv_overview"
             android:layout_width="0dp"
@@ -98,6 +114,7 @@
             android:layout_marginHorizontal="@dimen/default_margin_size"
             android:layout_marginTop="@dimen/margin_m"
             android:layout_marginBottom="32dp"
+            android:fontFamily="@font/be_vietnam"
             android:gravity="start"
             android:justificationMode="inter_word"
             android:textColor="@color/white"
@@ -105,7 +122,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvGenres"
+            app:layout_constraintTop_toBottomOf="@id/btn_watchlist_detail"
             tools:text="@string/txt_overview_example" />
 
         <ProgressBar
