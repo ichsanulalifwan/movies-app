@@ -81,10 +81,10 @@ class MovieUpcomingHolder(
         binding.run {
             if (state) {
                 tvMovieUpcoming.visibility = View.GONE
-                containerShimmerMoviePopular.shimmerSmallList.visibility = View.VISIBLE
+                containerShimmerMovieUpcoming.shimmerSmallList.visibility = View.VISIBLE
             } else {
                 tvMovieUpcoming.visibility = View.VISIBLE
-                containerShimmerMoviePopular.shimmerSmallList.visibility = View.GONE
+                containerShimmerMovieUpcoming.shimmerSmallList.visibility = View.GONE
             }
         }
     }

@@ -48,7 +48,8 @@ class TvPopularHolder(
                     }
                     is Resource.Error -> {
                         showLoading(false)
-                        binding.viewError.tvError.text = tv.message ?: context.getString(R.string.something_wrong)
+                        binding.viewError.tvError.text =
+                            tv.message ?: context.getString(R.string.something_wrong)
                         Toast.makeText(context, "Something Wrong", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -65,7 +66,8 @@ class TvPopularHolder(
     }
 
     private fun onItemSelected() {
-        tvShowPopularAdapter.setOnItemClickListener(object : TvShowPopularAdapter.OnItemClickListener {
+        tvShowPopularAdapter.setOnItemClickListener(object :
+            TvShowPopularAdapter.OnItemClickListener {
             override fun onMoviesClicked(tvShow: TvShowPopularEntity) {
                 val intent = Intent(context, DetailTvShowActivity::class.java)
                 intent.putExtra(DetailTvShowActivity.EXTRA_TV_ID, tvShow.tvId)
@@ -75,7 +77,14 @@ class TvPopularHolder(
     }
 
     private fun showLoading(state: Boolean) {
-        if (state) binding.progressBar.visibility = View.VISIBLE
-        else binding.progressBar.visibility = View.GONE
+        binding.run {
+            if (state) {
+                tvTvshowPopular.visibility = View.GONE
+                containerShimmerTvPopular.shimmerSmallList.visibility = View.VISIBLE
+            } else {
+                tvTvshowPopular.visibility = View.VISIBLE
+                containerShimmerTvPopular.shimmerSmallList.visibility = View.GONE
+            }
+        }
     }
 }

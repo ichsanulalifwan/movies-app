@@ -75,7 +75,14 @@ class TvOnTheAirHolder(
     }
 
     private fun showLoading(state: Boolean) {
-        if (state) binding.progressBar.visibility = View.VISIBLE
-        else binding.progressBar.visibility = View.GONE
+        binding.run {
+            if (state) {
+                tvTvshowOnTheAir.visibility = View.GONE
+                containerShimmerTvOntheair.shimmerSmallList.visibility = View.VISIBLE
+            } else {
+                tvTvshowOnTheAir.visibility = View.VISIBLE
+                containerShimmerTvOntheair.shimmerSmallList.visibility = View.GONE
+            }
+        }
     }
 }

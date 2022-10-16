@@ -81,10 +81,10 @@ class MovieTopRatedHolder(
         binding.run {
             if (state) {
                 tvMovieTopRated.visibility = View.GONE
-                containerShimmerMoviePopular.shimmerSmallList.visibility = View.VISIBLE
+                containerShimmerMovieToprated.shimmerSmallList.visibility = View.VISIBLE
             } else {
                 tvMovieTopRated.visibility = View.VISIBLE
-                containerShimmerMoviePopular.shimmerSmallList.visibility = View.GONE
+                containerShimmerMovieToprated.shimmerSmallList.visibility = View.GONE
             }
         }
     }

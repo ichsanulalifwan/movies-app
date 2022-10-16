@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_baseline_live_tv_24.xml" value="0.157" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_movie_24.xml" value="0.157" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_movie_select_24.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable-v24/shape_rectangle_grey.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_live_tv_24.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_baseline_movie_24.xml" value="0.1" />
@@ -27,8 +28,10 @@
         <entry key="app/src/main/res/layout/item_large_list.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/item_large_placeholder.xml" value="0.2867965698242188" />
         <entry key="app/src/main/res/layout/item_list.xml" value="0.224676513671875" />
+        <entry key="app/src/main/res/layout/item_small_placeholder.xml" value="0.17808227539062502" />
         <entry key="app/src/main/res/layout/item_watchlist.xml" value="0.23789581004918864" />
         <entry key="app/src/main/res/layout/layout_shimmer_large_item.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/layout_shimmer_small_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_empty.xml" value="0.19995269775390628" />
         <entry key="app/src/main/res/layout/view_error.xml" value="0.20347747802734376" />
         <entry key="app/src/main/res/layout/view_movie_now_playing.xml" value="0.2704315185546875" />

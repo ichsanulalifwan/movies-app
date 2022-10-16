@@ -80,7 +80,7 @@ class TvAiringTodayHolder(
     }
 
     private fun showLoading(state: Boolean) {
-        if (state) binding.progressBar.visibility = View.VISIBLE
-        else binding.progressBar.visibility = View.GONE
+        if (state) binding.containerShimmerTvAiring.shimmerMovieNow.visibility = View.VISIBLE
+        else binding.containerShimmerTvAiring.shimmerMovieNow.visibility = View.GONE
     }
 }

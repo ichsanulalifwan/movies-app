@@ -34,16 +34,9 @@
         app:layout_constraintTop_toBottomOf="@id/tv_tvshow_on_the_air"
         tools:listitem="@layout/item_list" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin_size"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/container_shimmer_tv_ontheair"
+        layout="@layout/layout_shimmer_small_item" />
 
     <include
         android:id="@+id/view_error"

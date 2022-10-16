@@ -35,7 +35,7 @@
         tools:listitem="@layout/item_list" />
 
     <include
-        android:id="@+id/container_shimmer_movie_popular"
+        android:id="@+id/container_shimmer_movie_upcoming"
         layout="@layout/layout_shimmer_small_item" />
 
     <include
