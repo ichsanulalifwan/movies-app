@@ -115,6 +115,23 @@
             app:layout_constraintTop_toBottomOf="@id/seasons_layout"
             tools:listitem="@layout/item_genre" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_watchlist_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/corner_radius"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/title_watchlist"
+            android:textAllCaps="false"
+            app:backgroundTint="@color/light_black"
+            app:cornerRadius="@dimen/corner_radius"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconGravity="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvGenres" />
+
         <TextView
             android:id="@+id/tv_overview"
             android:layout_width="0dp"
@@ -130,7 +147,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvGenres"
+            app:layout_constraintTop_toBottomOf="@id/btn_watchlist_detail"
             tools:text="@string/txt_overview_example" />
 
         <ProgressBar

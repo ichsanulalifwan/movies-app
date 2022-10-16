@@ -101,7 +101,7 @@
             android:layout_marginTop="@dimen/corner_radius"
             android:clickable="true"
             android:focusable="true"
-            android:text="Watchlist"
+            android:text="@string/title_watchlist"
             android:textAllCaps="false"
             app:backgroundTint="@color/light_black"
             app:cornerRadius="@dimen/corner_radius"

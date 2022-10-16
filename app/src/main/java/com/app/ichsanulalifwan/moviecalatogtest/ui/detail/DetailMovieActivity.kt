@@ -1,5 +1,6 @@
 package com.app.ichsanulalifwan.moviecalatogtest.ui.detail
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -55,9 +56,9 @@ class DetailMovieActivity : AppCompatActivity() {
                             if (movie.data != null) {
                                 populateData(movie.data.mMovie)
                                 getGenres(DataMapper.mapMovieGenreEntityToModel(movie.data.mGenre))
-                                showLoading(false)
                                 setWatchlistState(movie.data.mMovie.isWishlist)
                                 onWatchlistClicked(movie.data.mMovie)
+                                showLoading(false)
                             }
                         }
                         is Resource.Error -> {
@@ -75,7 +76,7 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun populateData(movie: MovieNowPlayingEntity) {
-        binding.apply {
+        binding.run {
             tvOverview.text = movie.overview
             tvRelase.text = movie.releaseDate
             tvRuntime.text = movie.runtime.toString()
@@ -117,35 +118,31 @@ class DetailMovieActivity : AppCompatActivity() {
     private fun setWatchlistState(state: Boolean) {
         binding.btnWatchlistDetail.run {
             if (state) {
-                backgroundTintList =
-                    ContextCompat.getColorStateList(applicationContext, R.color.white)
+                backgroundTintList = getColorState(R.color.white)
                 icon =
                     ContextCompat.getDrawable(applicationContext, R.drawable.ic_baseline_check_24)
-                iconTint = ContextCompat.getColorStateList(applicationContext, R.color.deep_black)
-                setTextColor(
-                    ContextCompat.getColorStateList(
-                        applicationContext,
-                        R.color.deep_black
-                    )
-                )
+                iconTint = getColorState(R.color.deep_black)
+                setTextColor(getColorState(R.color.deep_black))
             } else {
-                backgroundTintList =
-                    ContextCompat.getColorStateList(applicationContext, R.color.light_black)
+                backgroundTintList = getColorState(R.color.light_black)
                 icon = ContextCompat.getDrawable(applicationContext, R.drawable.ic_baseline_add_24)
-                iconTint = ContextCompat.getColorStateList(applicationContext, R.color.white)
-                setTextColor(ContextCompat.getColorStateList(applicationContext, R.color.white))
+                iconTint = getColorState(R.color.white)
+                setTextColor(getColorState(R.color.white))
             }
         }
+    }
+
+    private fun getColorState(colorId: Int): ColorStateList? =
+        ContextCompat.getColorStateList(applicationContext, colorId)
+
+    private fun showLoading(state: Boolean) {
+        if (state) binding.progressBar.visibility = View.VISIBLE
+        else binding.progressBar.visibility = View.GONE
     }
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return super.onSupportNavigateUp()
-    }
-
-    private fun showLoading(state: Boolean) {
-        if (state) binding.progressBar.visibility = View.VISIBLE
-        else binding.progressBar.visibility = View.GONE
     }
 
     companion object {

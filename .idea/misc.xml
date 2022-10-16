@@ -15,8 +15,8 @@
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_movie_selector.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_detail_movie.xml" value="0.4330981158901573" />
-        <entry key="app/src/main/res/layout/activity_detail_tv_show.xml" value="0.3090660842513169" />
+        <entry key="app/src/main/res/layout/activity_detail_movie.xml" value="0.2764132404018759" />
+        <entry key="app/src/main/res/layout/activity_detail_tv_show.xml" value="0.3257668288802231" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11866455078125" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.12151400801064312" />

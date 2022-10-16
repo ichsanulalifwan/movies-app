@@ -9,17 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentWatchlistItemBinding
 import com.app.ichsanulalifwan.moviecalatogtest.ui.detail.DetailMovieActivity
-import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.adapter.TvShowAiringAdapter
-import com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist.adapter.WatchlistAdapter
+import com.app.ichsanulalifwan.moviecalatogtest.ui.detail.DetailTvShowActivity
+import com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist.adapter.WatchlistMovieAdapter
+import com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist.adapter.WatchlistTvAdapter
 import com.app.ichsanulalifwan.moviecalatogtest.viewmodel.ViewModelFactory
 
 class WatchlistItemFragment : Fragment() {
 
     private lateinit var viewModel: WatchlistViewModel
-    private lateinit var itemAdapter: WatchlistAdapter
-    private lateinit var tvAdapter: TvShowAiringAdapter
+    private lateinit var movieAdapter: WatchlistMovieAdapter
+    private lateinit var tvAdapter: WatchlistTvAdapter
     private var _binding: FragmentWatchlistItemBinding? = null
     private val binding get() = _binding!!
 
@@ -41,8 +43,8 @@ class WatchlistItemFragment : Fragment() {
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[WatchlistViewModel::class.java]
 
-            itemAdapter = WatchlistAdapter()
-            tvAdapter = TvShowAiringAdapter()
+            movieAdapter = WatchlistMovieAdapter()
+            tvAdapter = WatchlistTvAdapter()
 
             setupRecyclerView()
             showLoading(true)
@@ -55,20 +57,20 @@ class WatchlistItemFragment : Fragment() {
     }
 
     private fun showWatchlistMovie() {
-        binding.rvWatchlistContainer.adapter = itemAdapter
+        binding.rvWatchlistContainer.adapter = movieAdapter
         viewModel.getWatchlistMovie().observe(viewLifecycleOwner) { movie ->
             if (movie != null && movie.isNotEmpty()) {
-                itemAdapter.submitList(movie)
+                movieAdapter.submitList(movie)
                 binding.viewEmpty.root.visibility = View.GONE
             } else binding.viewEmpty.root.visibility = View.VISIBLE
         }
         showLoading(false)
 
-        itemAdapter.setOnItemClickListener(object : WatchlistAdapter.OnItemClickListener {
+        movieAdapter.setOnItemClickListener(object : WatchlistMovieAdapter.OnItemClickListener {
             override fun onItemClicked(movies: MovieNowPlayingEntity) {
                 val intent = Intent(context, DetailMovieActivity::class.java)
                 intent.putExtra(DetailMovieActivity.EXTRA_MOVIE_ID, movies.movieId)
-                requireContext().startActivity(intent)
+                startActivity(intent)
             }
         })
     }
@@ -83,13 +85,13 @@ class WatchlistItemFragment : Fragment() {
         }
         showLoading(false)
 
-//        tvAdapter.setOnItemClickListener(object : TvShowAdapter.OnItemClickListener {
-//            override fun onTvClicked(tv: TvShowEntity) {
-//                val intent = Intent(context, DetailTvShowActivity::class.java)
-//                intent.putExtra(DetailTvShowActivity.EXTRA_TV_ID, tv.tvId)
-//                startActivity(intent)
-//            }
-//        })
+        tvAdapter.setOnItemClickListener(object : WatchlistTvAdapter.OnItemClickListener {
+            override fun onItemClicked(tv: TvShowAiringEntity) {
+                val intent = Intent(context, DetailTvShowActivity::class.java)
+                intent.putExtra(DetailTvShowActivity.EXTRA_TV_ID, tv.tvId)
+                startActivity(intent)
+            }
+        })
     }
 
     private fun setupRecyclerView() {

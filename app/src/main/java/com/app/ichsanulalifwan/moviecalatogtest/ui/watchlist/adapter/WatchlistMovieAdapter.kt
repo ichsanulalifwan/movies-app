@@ -11,7 +11,8 @@ import com.app.ichsanulalifwan.moviecalatogtest.databinding.ItemWatchlistBinding
 import com.app.ichsanulalifwan.moviecalatogtest.utils.Constant
 import com.bumptech.glide.Glide
 
-class WatchlistAdapter : PagedListAdapter<MovieNowPlayingEntity, WatchlistAdapter.MovieViewHolder>(DIFF_CALLBACK)  {
+class WatchlistMovieAdapter :
+    PagedListAdapter<MovieNowPlayingEntity, WatchlistMovieAdapter.MovieViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickListener: OnItemClickListener
 
@@ -60,11 +61,17 @@ class WatchlistAdapter : PagedListAdapter<MovieNowPlayingEntity, WatchlistAdapte
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MovieNowPlayingEntity>() {
-            override fun areItemsTheSame(oldItem: MovieNowPlayingEntity, newItem: MovieNowPlayingEntity): Boolean {
+            override fun areItemsTheSame(
+                oldItem: MovieNowPlayingEntity,
+                newItem: MovieNowPlayingEntity
+            ): Boolean {
                 return oldItem.movieId == newItem.movieId
             }
 
-            override fun areContentsTheSame(oldItem: MovieNowPlayingEntity, newItem: MovieNowPlayingEntity): Boolean {
+            override fun areContentsTheSame(
+                oldItem: MovieNowPlayingEntity,
+                newItem: MovieNowPlayingEntity
+            ): Boolean {
                 return oldItem == newItem
             }
         }
