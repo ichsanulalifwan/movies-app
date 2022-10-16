@@ -8,14 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentWatchlistItemBinding
-import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.adapter.MovieNowPlayingAdapter
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.adapter.TvShowAiringAdapter
+import com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist.adapter.WatchlistAdapter
 import com.app.ichsanulalifwan.moviecalatogtest.viewmodel.ViewModelFactory
 
 class WatchlistItemFragment : Fragment() {
 
     private lateinit var viewModel: WatchlistViewModel
-    private lateinit var movieAdapter: MovieNowPlayingAdapter
+    private lateinit var itemAdapter: WatchlistAdapter
     private lateinit var tvAdapter: TvShowAiringAdapter
     private var _binding: FragmentWatchlistItemBinding? = null
     private val binding get() = _binding!!
@@ -38,7 +38,7 @@ class WatchlistItemFragment : Fragment() {
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[WatchlistViewModel::class.java]
 
-            movieAdapter = MovieNowPlayingAdapter()
+            itemAdapter = WatchlistAdapter()
             tvAdapter = TvShowAiringAdapter()
 
             setupRecyclerView()
@@ -52,10 +52,10 @@ class WatchlistItemFragment : Fragment() {
     }
 
     private fun showWatchlistMovie() {
-        binding.rvWatchlistContainer.adapter = movieAdapter
+        binding.rvWatchlistContainer.adapter = itemAdapter
         viewModel.getWatchlistMovie().observe(viewLifecycleOwner) { movie ->
             if (movie != null && movie.isNotEmpty()) {
-                movieAdapter.submitList(movie)
+                itemAdapter.submitList(movie)
                 binding.viewEmpty.root.visibility = View.GONE
             } else binding.viewEmpty.root.visibility = View.VISIBLE
         }

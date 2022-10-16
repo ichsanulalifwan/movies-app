@@ -1,9 +1,12 @@
 package com.app.ichsanulalifwan.moviecalatogtest.ui.detail
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ichsanulalifwan.moviecalatogtest.R
@@ -55,6 +58,8 @@ class DetailMovieActivity : AppCompatActivity() {
                                 populateData(movie.data.mMovie)
                                 getGenres(DataMapper.mapMovieGenreEntityToModel(movie.data.mGenre))
                                 showLoading(false)
+                                setWatchlistState(movie.data.mMovie.isWishlist)
+                                onWatchlistClicked(movie.data.mMovie)
                             }
                         }
                         is Resource.Error -> {
@@ -93,6 +98,27 @@ class DetailMovieActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = genresAdapter
         }
+    }
+
+    private fun onWatchlistClicked(data: MovieNowPlayingEntity) {
+        binding.btnWatchlistDetail.setOnClickListener {
+            viewModel.setMovieFavorite()
+            if (!data.isWishlist) Toast.makeText(
+                this,
+                data.title + " " + "Added to Watchlist",
+                Toast.LENGTH_LONG
+            ).show()
+            else Toast.makeText(
+                this,
+                data.title + " " + "Deleted from Watchlist",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private fun setWatchlistState(state: Boolean) {
+        binding.btnWatchlistDetail.icon = if (state) ContextCompat.getDrawable(applicationContext, R.drawable.ic_baseline_favorite_border_24)
+        else ContextCompat.getDrawable(applicationContext, R.drawable.ic_baseline_watchlist_24)
     }
 
     override fun onSupportNavigateUp(): Boolean {

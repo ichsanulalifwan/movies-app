@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.app.ichsanulalifwan.moviecalatogtest.R
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentWatchlistBinding
+import com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist.adapter.WatchlistPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
