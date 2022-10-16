@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.ichsanulalifwan.moviecalatogtest.R
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
-import com.app.ichsanulalifwan.moviecalatogtest.databinding.ItemListBinding
+import com.app.ichsanulalifwan.moviecalatogtest.databinding.ItemLargeListBinding
 import com.app.ichsanulalifwan.moviecalatogtest.utils.Constant.IMAGE_PREFIX
 import com.bumptech.glide.Glide
 
@@ -20,7 +20,7 @@ class MovieNowPlayingAdapter : PagedListAdapter<MovieNowPlayingEntity, MovieNowP
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val itemMovieBinding = ItemListBinding.inflate(
+        val itemMovieBinding = ItemLargeListBinding.inflate(
             LayoutInflater.from(parent.context),
             parent, false
         )
@@ -34,7 +34,7 @@ class MovieNowPlayingAdapter : PagedListAdapter<MovieNowPlayingEntity, MovieNowP
         }
     }
 
-    inner class MovieViewHolder(private val binding: ItemListBinding) :
+    inner class MovieViewHolder(private val binding: ItemLargeListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movies: MovieNowPlayingEntity) {
