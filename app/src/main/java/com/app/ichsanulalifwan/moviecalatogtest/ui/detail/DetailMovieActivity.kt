@@ -1,12 +1,10 @@
 package com.app.ichsanulalifwan.moviecalatogtest.ui.detail
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ichsanulalifwan.moviecalatogtest.R
@@ -117,8 +115,27 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun setWatchlistState(state: Boolean) {
-        binding.btnWatchlistDetail.icon = if (state) ContextCompat.getDrawable(applicationContext, R.drawable.ic_baseline_favorite_border_24)
-        else ContextCompat.getDrawable(applicationContext, R.drawable.ic_baseline_watchlist_24)
+        binding.btnWatchlistDetail.run {
+            if (state) {
+                backgroundTintList =
+                    ContextCompat.getColorStateList(applicationContext, R.color.white)
+                icon =
+                    ContextCompat.getDrawable(applicationContext, R.drawable.ic_baseline_check_24)
+                iconTint = ContextCompat.getColorStateList(applicationContext, R.color.deep_black)
+                setTextColor(
+                    ContextCompat.getColorStateList(
+                        applicationContext,
+                        R.color.deep_black
+                    )
+                )
+            } else {
+                backgroundTintList =
+                    ContextCompat.getColorStateList(applicationContext, R.color.light_black)
+                icon = ContextCompat.getDrawable(applicationContext, R.drawable.ic_baseline_add_24)
+                iconTint = ContextCompat.getColorStateList(applicationContext, R.color.white)
+                setTextColor(ContextCompat.getColorStateList(applicationContext, R.color.white))
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,5 +1,6 @@
 package com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentWatchlistItemBinding
+import com.app.ichsanulalifwan.moviecalatogtest.ui.detail.DetailMovieActivity
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.adapter.TvShowAiringAdapter
 import com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist.adapter.WatchlistAdapter
 import com.app.ichsanulalifwan.moviecalatogtest.viewmodel.ViewModelFactory
@@ -61,13 +64,13 @@ class WatchlistItemFragment : Fragment() {
         }
         showLoading(false)
 
-//        movieAdapter.setOnItemClickListener(object : MovieAdapter.OnItemClickListener {
-//            override fun onMoviesClicked(movies: MovieEntity) {
-//                val intent = Intent(context, DetailMovieActivity::class.java)
-//                intent.putExtra(DetailMovieActivity.EXTRA_MOVIE_ID, movies.movieId)
-//                startActivity(intent)
-//            }
-//        })
+        itemAdapter.setOnItemClickListener(object : WatchlistAdapter.OnItemClickListener {
+            override fun onItemClicked(movies: MovieNowPlayingEntity) {
+                val intent = Intent(context, DetailMovieActivity::class.java)
+                intent.putExtra(DetailMovieActivity.EXTRA_MOVIE_ID, movies.movieId)
+                requireContext().startActivity(intent)
+            }
+        })
     }
 
     private fun showWatchlistTv() {
