@@ -10,7 +10,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/tmdb_color"
         android:paddingBottom="16dp">
 
         <ImageView
@@ -79,11 +78,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvGenres"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_margin_size"
+            android:layout_marginStart="@dimen/margin_m"
             android:layout_marginTop="@dimen/margin_m"
-            android:layout_marginEnd="@dimen/margin_s"
+            android:layout_marginEnd="@dimen/margin_m"
             android:orientation="horizontal"
             android:scrollbarSize="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -100,6 +99,7 @@
             android:layout_marginTop="@dimen/margin_m"
             android:layout_marginBottom="32dp"
             android:gravity="start"
+            android:justificationMode="inter_word"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,6 +1,7 @@
 package com.app.ichsanulalifwan.moviecalatogtest.ui.movie.viewholder
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
@@ -11,6 +12,8 @@ import com.app.ichsanulalifwan.moviecalatogtest.R
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewMovieNowPlayingBinding
+import com.app.ichsanulalifwan.moviecalatogtest.ui.detail.DetailMovieActivity
+import com.app.ichsanulalifwan.moviecalatogtest.ui.detail.DetailMovieActivity.Companion.EXTRA_MOVIE_ID
 import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.MovieViewModel
 import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.adapter.MovieNowPlayingAdapter
 
@@ -71,9 +74,9 @@ class MovieNowPlayingHolder(
         movieNowPlayingAdapter.setOnItemClickListener(object :
             MovieNowPlayingAdapter.OnItemClickListener {
             override fun onMoviesClicked(movies: MovieNowPlayingEntity) {
-//                val intent = Intent(context, DetailMovieActivity::class.java)
-//                intent.putExtra(EXTRA_MOVIE_ID, movies.movieId)
-//                startActivity(intent)
+                val intent = Intent(context, DetailMovieActivity::class.java)
+                intent.putExtra(EXTRA_MOVIE_ID, movies.movieId)
+                context.startActivity(intent)
             }
         })
     }

@@ -14,17 +14,19 @@
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_movie_selector.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_detail_movie.xml" value="0.12202621969395883" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11866455078125" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.12151400801064312" />
         <entry key="app/src/main/res/layout/fragment_tvshow.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_watchlist.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_watchlist_item.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/item_genre.xml" value="0.8393942570340807" />
         <entry key="app/src/main/res/layout/item_large_list.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/item_list.xml" value="0.224676513671875" />
         <entry key="app/src/main/res/layout/view_empty.xml" value="0.19995269775390628" />
         <entry key="app/src/main/res/layout/view_error.xml" value="0.20347747802734376" />
-        <entry key="app/src/main/res/layout/view_movie_now_playing.xml" value="0.23726501464843752" />
+        <entry key="app/src/main/res/layout/view_movie_now_playing.xml" value="0.101007080078125" />
         <entry key="app/src/main/res/layout/view_movie_popular.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_movie_top_rated.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_movie_upcoming.xml" value="0.1" />
