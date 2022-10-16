@@ -5,9 +5,7 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.LocalDataSource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.*
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvDetailWithGenre
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvGenreEntity
-import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
+import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.*
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.remote.RemoteDataSource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.remote.network.ApiResponse
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.remote.response.MovieDetailResponse
@@ -220,7 +218,7 @@ class AppRepository(
                     .setInitialLoadSizeHint(6)
                     .setPageSize(6)
                     .build()
-                return LivePagedListBuilder(localDataSource.getPopularTvShow(), config).build()
+                return LivePagedListBuilder(localDataSource.getAiringTvShow(), config).build()
             }
 
             override fun shouldFetch(data: PagedList<TvShowAiringEntity>?): Boolean =
@@ -239,48 +237,48 @@ class AppRepository(
                     )
                     tvList.add(tvShow)
                 }
-                localDataSource.insertTvShow(tvList)
+                localDataSource.insertAiringTvShow(tvList)
             }
         }.asLiveData()
     }
 
-    override fun getOnTheAirTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>> {
+    override fun getOnTheAirTvShow(): LiveData<Resource<PagedList<TvShowOnTheAirEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<TvShowAiringEntity>, List<TvShowResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<TvShowAiringEntity>> {
+            NetworkBoundResource<PagedList<TvShowOnTheAirEntity>, List<TvShowResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<TvShowOnTheAirEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
                     .setPageSize(6)
                     .build()
-                return LivePagedListBuilder(localDataSource.getPopularTvShow(), config).build()
+                return LivePagedListBuilder(localDataSource.getOnTheAirTvShow(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<TvShowAiringEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<TvShowOnTheAirEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<TvShowResultsItem>>> =
                 remoteDataSource.getOnTheAirTvShow()
 
             override fun saveCallResult(data: List<TvShowResultsItem>) {
-                val tvList = ArrayList<TvShowAiringEntity>()
+                val tvList = ArrayList<TvShowOnTheAirEntity>()
                 for (response in data) {
-                    val tvShow = TvShowAiringEntity(
+                    val tvShow = TvShowOnTheAirEntity(
                         response.id,
                         response.name,
                         response.posterPath
                     )
                     tvList.add(tvShow)
                 }
-                localDataSource.insertTvShow(tvList)
+                localDataSource.insertOnTheAirTvShow(tvList)
             }
         }.asLiveData()
     }
 
-    override fun getPopularTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>> {
+    override fun getPopularTvShow(): LiveData<Resource<PagedList<TvShowPopularEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<TvShowAiringEntity>, List<TvShowResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<TvShowAiringEntity>> {
+            NetworkBoundResource<PagedList<TvShowPopularEntity>, List<TvShowResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<TvShowPopularEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
@@ -289,56 +287,56 @@ class AppRepository(
                 return LivePagedListBuilder(localDataSource.getPopularTvShow(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<TvShowAiringEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<TvShowPopularEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<TvShowResultsItem>>> =
                 remoteDataSource.getPopularTvShow()
 
             override fun saveCallResult(data: List<TvShowResultsItem>) {
-                val tvList = ArrayList<TvShowAiringEntity>()
+                val tvList = ArrayList<TvShowPopularEntity>()
                 for (response in data) {
-                    val tvShow = TvShowAiringEntity(
+                    val tvShow = TvShowPopularEntity(
                         response.id,
                         response.name,
                         response.posterPath
                     )
                     tvList.add(tvShow)
                 }
-                localDataSource.insertTvShow(tvList)
+                localDataSource.insertPopularTvShow(tvList)
             }
         }.asLiveData()
     }
 
-    override fun getTopRatedTvShow(): LiveData<Resource<PagedList<TvShowAiringEntity>>> {
+    override fun getTopRatedTvShow(): LiveData<Resource<PagedList<TvShowTopRatedEntity>>> {
         return object :
-            NetworkBoundResource<PagedList<TvShowAiringEntity>, List<TvShowResultsItem>>(appExecutors) {
-            override fun loadFromDB(): LiveData<PagedList<TvShowAiringEntity>> {
+            NetworkBoundResource<PagedList<TvShowTopRatedEntity>, List<TvShowResultsItem>>(appExecutors) {
+            override fun loadFromDB(): LiveData<PagedList<TvShowTopRatedEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
                     .setInitialLoadSizeHint(6)
                     .setPageSize(6)
                     .build()
-                return LivePagedListBuilder(localDataSource.getPopularTvShow(), config).build()
+                return LivePagedListBuilder(localDataSource.getTopRatedTvShow(), config).build()
             }
 
-            override fun shouldFetch(data: PagedList<TvShowAiringEntity>?): Boolean =
+            override fun shouldFetch(data: PagedList<TvShowTopRatedEntity>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<TvShowResultsItem>>> =
                 remoteDataSource.getTopRatedTvShow()
 
             override fun saveCallResult(data: List<TvShowResultsItem>) {
-                val tvList = ArrayList<TvShowAiringEntity>()
+                val tvList = ArrayList<TvShowTopRatedEntity>()
                 for (response in data) {
-                    val tvShow = TvShowAiringEntity(
+                    val tvShow = TvShowTopRatedEntity(
                         response.id,
                         response.name,
                         response.posterPath
                     )
                     tvList.add(tvShow)
                 }
-                localDataSource.insertTvShow(tvList)
+                localDataSource.insertTopRatedTvShow(tvList)
             }
         }.asLiveData()
     }
@@ -367,7 +365,7 @@ class AppRepository(
                         data.numberOfSeasons
                     )
                 )
-                localDataSource.insertTvShow(tvData)
+                localDataSource.insertAiringTvShow(tvData)
 
                 val genreList = ArrayList<TvGenreEntity>()
                 for (response in data.genres) {
