@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentTvshowBinding
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewTvAiringTodayBinding
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.adapter.TvShowViewAdapter
-import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.viewholder.AiringTodayHolder
+import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.viewholder.TvAiringTodayHolder
 import com.app.ichsanulalifwan.moviecalatogtest.viewmodel.ViewModelFactory
 
 class TvShowFragment : Fragment() {
@@ -37,7 +37,7 @@ class TvShowFragment : Fragment() {
         )[TvShowViewModel::class.java]
 
         val tvShowViews = listOf(
-            AiringTodayHolder(
+            TvAiringTodayHolder(
                 ViewTvAiringTodayBinding.inflate(
                     LayoutInflater.from(requireContext()),
                     binding.root,

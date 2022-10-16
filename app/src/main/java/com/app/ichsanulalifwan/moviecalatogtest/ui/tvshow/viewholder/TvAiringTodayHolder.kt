@@ -10,9 +10,9 @@ import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewTvAiringTodayBinding
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.TvShowViewModel
-import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.adapter.TvShowAdapter
+import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.adapter.TvShowAiringAdapter
 
-class AiringTodayHolder(
+class TvAiringTodayHolder(
     itemView: View,
     private val viewLifeCycleOwner: LifecycleOwner
 ) : TvShowViewHolder(itemView) {
@@ -20,13 +20,13 @@ class AiringTodayHolder(
     private val binding = ViewTvAiringTodayBinding.bind(itemView)
     private lateinit var context: Context
     private lateinit var viewModel: TvShowViewModel
-    private lateinit var tvShowAdapter: TvShowAdapter
+    private lateinit var tvShowAiringAdapter: TvShowAiringAdapter
 
     override fun bind(context: Context, viewModel: TvShowViewModel) {
         this.context = context
         this.viewModel = viewModel
 
-        tvShowAdapter = TvShowAdapter()
+        tvShowAiringAdapter = TvShowAiringAdapter()
         setupRecyclerView()
         showLoading(true)
         initData()
@@ -40,7 +40,7 @@ class AiringTodayHolder(
                 when (movie) {
                     is Resource.Loading -> showLoading(true)
                     is Resource.Success -> {
-                        tvShowAdapter.submitList(movie.data)
+                        tvShowAiringAdapter.submitList(movie.data)
                         showLoading(false)
                     }
                     is Resource.Error -> {
@@ -56,12 +56,12 @@ class AiringTodayHolder(
         with(binding.rvTvshowAiringToday) {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             setHasFixedSize(true)
-            adapter = tvShowAdapter
+            adapter = tvShowAiringAdapter
         }
     }
 
     private fun onMovieSelected() {
-        tvShowAdapter.setOnItemClickListener(object : TvShowAdapter.OnItemClickListener {
+        tvShowAiringAdapter.setOnItemClickListener(object : TvShowAiringAdapter.OnItemClickListener {
             override fun onMoviesClicked(tvShow: TvShowAiringEntity) {
 //                val intent = Intent(context, DetailMovieActivity::class.java)
 //                intent.putExtra(EXTRA_MOVIE_ID, movies.movieId)

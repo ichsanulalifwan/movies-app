@@ -11,7 +11,7 @@ import com.app.ichsanulalifwan.moviecalatogtest.databinding.ItemListBinding
 import com.app.ichsanulalifwan.moviecalatogtest.utils.Constant.IMAGE_PREFIX
 import com.bumptech.glide.Glide
 
-class TvShowAdapter : PagedListAdapter<TvShowAiringEntity, TvShowAdapter.TvShowViewHolder>(DIFF_CALLBACK)  {
+class TvShowAiringAdapter : PagedListAdapter<TvShowAiringEntity, TvShowAiringAdapter.TvShowViewHolder>(DIFF_CALLBACK)  {
 
     private lateinit var onItemClickListener: OnItemClickListener
 
