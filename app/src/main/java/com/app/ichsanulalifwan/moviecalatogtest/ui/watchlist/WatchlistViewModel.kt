@@ -9,7 +9,7 @@ import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.
 
 class WatchlistViewModel(private val repository: AppRepository) : ViewModel() {
 
-    fun getWishlistMovie(): LiveData<PagedList<MovieNowPlayingEntity>> = repository.getWishlistMovie()
+    fun getWatchlistMovie(): LiveData<PagedList<MovieNowPlayingEntity>> = repository.getWishlistMovie()
 
-    fun getWishlistTvShow(): LiveData<PagedList<TvShowAiringEntity>> = repository.getWishlistTvShow()
+    fun getWatchlistTvShow(): LiveData<PagedList<TvShowAiringEntity>> = repository.getWishlistTvShow()
 }
