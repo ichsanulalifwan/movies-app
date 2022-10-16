@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.app.ichsanulalifwan.moviecalatogtest.R
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowPopularEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewTvPopularBinding
@@ -30,21 +31,22 @@ class TvPopularHolder(
         setupRecyclerView()
         showLoading(true)
         initData()
-        onMovieSelected()
+        onItemSelected()
     }
 
     private fun initData() {
 
-        viewModel.getPopularTvShow().observe(viewLifeCycleOwner) { movie ->
-            if (movie != null) {
-                when (movie) {
+        viewModel.getPopularTvShow().observe(viewLifeCycleOwner) { tv ->
+            if (tv != null) {
+                when (tv) {
                     is Resource.Loading -> showLoading(true)
                     is Resource.Success -> {
-                        tvShowPopularAdapter.submitList(movie.data)
+                        tvShowPopularAdapter.submitList(tv.data)
                         showLoading(false)
                     }
                     is Resource.Error -> {
                         showLoading(false)
+                        binding.viewError.tvError.text = tv.message ?: context.getString(R.string.something_wrong)
                         Toast.makeText(context, "Something Wrong", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -60,7 +62,7 @@ class TvPopularHolder(
         }
     }
 
-    private fun onMovieSelected() {
+    private fun onItemSelected() {
         tvShowPopularAdapter.setOnItemClickListener(object : TvShowPopularAdapter.OnItemClickListener {
             override fun onMoviesClicked(tvShow: TvShowPopularEntity) {
 //                val intent = Intent(context, DetailMovieActivity::class.java)

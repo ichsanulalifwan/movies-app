@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.app.ichsanulalifwan.moviecalatogtest.R
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MoviePopularEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewMoviePopularBinding
@@ -45,6 +46,7 @@ class MoviePopularHolder(
                     }
                     is Resource.Error -> {
                         showLoading(false)
+                        binding.viewError.tvError.text = movie.message ?: context.getString(R.string.something_wrong)
                         Toast.makeText(context, "Something Wrong", Toast.LENGTH_SHORT).show()
                     }
                 }

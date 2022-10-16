@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.app.ichsanulalifwan.moviecalatogtest.R
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowTopRatedEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewTvTopRatedBinding
@@ -30,21 +31,22 @@ class TvTopRatedHolder(
         setupRecyclerView()
         showLoading(true)
         initData()
-        onMovieSelected()
+        onItemSelected()
     }
 
     private fun initData() {
 
-        viewModel.getTopRatedTvShow().observe(viewLifeCycleOwner) { movie ->
-            if (movie != null) {
-                when (movie) {
+        viewModel.getTopRatedTvShow().observe(viewLifeCycleOwner) { tv ->
+            if (tv != null) {
+                when (tv) {
                     is Resource.Loading -> showLoading(true)
                     is Resource.Success -> {
-                        tvShowTopRatedAdapter.submitList(movie.data)
+                        tvShowTopRatedAdapter.submitList(tv.data)
                         showLoading(false)
                     }
                     is Resource.Error -> {
                         showLoading(false)
+                        binding.viewError.tvError.text = tv.message ?: context.getString(R.string.something_wrong)
                         Toast.makeText(context, "Something Wrong", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -60,7 +62,7 @@ class TvTopRatedHolder(
         }
     }
 
-    private fun onMovieSelected() {
+    private fun onItemSelected() {
         tvShowTopRatedAdapter.setOnItemClickListener(object : TvShowTopRatedAdapter.OnItemClickListener {
             override fun onMoviesClicked(tvShow: TvShowTopRatedEntity) {
 //                val intent = Intent(context, DetailMovieActivity::class.java)

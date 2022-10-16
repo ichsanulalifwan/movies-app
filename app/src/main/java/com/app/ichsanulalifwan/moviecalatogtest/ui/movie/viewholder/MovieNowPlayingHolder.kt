@@ -7,6 +7,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.app.ichsanulalifwan.moviecalatogtest.R
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.movie.MovieNowPlayingEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewMovieNowPlayingBinding
@@ -47,6 +48,7 @@ class MovieNowPlayingHolder(
                     }
                     is Resource.Error -> {
                         showLoading(false)
+                        binding.viewError.tvError.text = movie.message ?: context.getString(R.string.something_wrong)
                         Toast.makeText(context, "Something Wrong", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -66,7 +68,8 @@ class MovieNowPlayingHolder(
     }
 
     private fun onMovieSelected() {
-        movieNowPlayingAdapter.setOnItemClickListener(object : MovieNowPlayingAdapter.OnItemClickListener {
+        movieNowPlayingAdapter.setOnItemClickListener(object :
+            MovieNowPlayingAdapter.OnItemClickListener {
             override fun onMoviesClicked(movies: MovieNowPlayingEntity) {
 //                val intent = Intent(context, DetailMovieActivity::class.java)
 //                intent.putExtra(EXTRA_MOVIE_ID, movies.movieId)

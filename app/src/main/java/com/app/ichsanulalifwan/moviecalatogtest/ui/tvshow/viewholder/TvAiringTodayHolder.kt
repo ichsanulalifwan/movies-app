@@ -7,6 +7,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.app.ichsanulalifwan.moviecalatogtest.R
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewTvAiringTodayBinding
@@ -31,21 +32,22 @@ class TvAiringTodayHolder(
         setupRecyclerView()
         showLoading(true)
         initData()
-        onMovieSelected()
+        onItemSelected()
     }
 
     private fun initData() {
 
-        viewModel.getAiringTodayTvShow().observe(viewLifeCycleOwner) { movie ->
-            if (movie != null) {
-                when (movie) {
+        viewModel.getAiringTodayTvShow().observe(viewLifeCycleOwner) { tv ->
+            if (tv != null) {
+                when (tv) {
                     is Resource.Loading -> showLoading(true)
                     is Resource.Success -> {
-                        tvShowAiringAdapter.submitList(movie.data)
+                        tvShowAiringAdapter.submitList(tv.data)
                         showLoading(false)
                     }
                     is Resource.Error -> {
                         showLoading(false)
+                        binding.viewError.tvError.text = tv.message ?: context.getString(R.string.something_wrong)
                         Toast.makeText(context, "Something Wrong", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -64,7 +66,7 @@ class TvAiringTodayHolder(
         }
     }
 
-    private fun onMovieSelected() {
+    private fun onItemSelected() {
         tvShowAiringAdapter.setOnItemClickListener(object : TvShowAiringAdapter.OnItemClickListener {
             override fun onMoviesClicked(tvShow: TvShowAiringEntity) {
 //                val intent = Intent(context, DetailMovieActivity::class.java)
