@@ -21,14 +21,14 @@ class DetailTvShowViewModel(private val repository: AppRepository) : ViewModel()
         this.tvId.value = tvId
     }
 
-    fun setTvFavorite() {
+    fun setWatchlistTv() {
         val tvResource = detailTv.value
         if (tvResource != null) {
             val tv = tvResource.data
             if (tv != null) {
                 val tvEntity = tv.mTv
                 val newState = !tvEntity.isWishlist
-                repository.setWishlistTvShow(tvEntity, newState)
+                repository.setWatchlistTvShow(tvEntity, newState)
             }
         }
     }

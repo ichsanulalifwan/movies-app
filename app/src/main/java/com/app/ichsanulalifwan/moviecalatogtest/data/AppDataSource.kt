@@ -18,9 +18,9 @@ interface AppDataSource {
 
     fun getDetailMovie(movieId: Int): LiveData<Resource<MovieDetailWithGenre>>
 
-    fun getWishlistMovie(): LiveData<PagedList<MovieNowPlayingEntity>>
+    fun getWatchlistMovie(): LiveData<PagedList<MovieNowPlayingEntity>>
 
-    fun setWishlistMovie(movie: MovieNowPlayingEntity, state: Boolean)
+    fun setWatchlistMovie(movie: MovieNowPlayingEntity, state: Boolean)
 
 
     // TV Shows
@@ -34,7 +34,7 @@ interface AppDataSource {
 
     fun getDetailTvShow(tvId: Int): LiveData<Resource<TvDetailWithGenre>>
 
-    fun getWishlistTvShow(): LiveData<PagedList<TvShowAiringEntity>>
+    fun getWatchlistTvShow(): LiveData<PagedList<TvShowAiringEntity>>
 
-    fun setWishlistTvShow(tv: TvShowAiringEntity, state: Boolean)
+    fun setWatchlistTvShow(tv: TvShowAiringEntity, state: Boolean)
 }

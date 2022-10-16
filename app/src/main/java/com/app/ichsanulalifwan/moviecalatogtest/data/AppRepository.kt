@@ -193,7 +193,7 @@ class AppRepository(
         }.asLiveData()
     }
 
-    override fun getWishlistMovie(): LiveData<PagedList<MovieNowPlayingEntity>> {
+    override fun getWatchlistMovie(): LiveData<PagedList<MovieNowPlayingEntity>> {
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
             .setInitialLoadSizeHint(6)
@@ -202,7 +202,7 @@ class AppRepository(
         return LivePagedListBuilder(localDataSource.getWishlistMovie(), config).build()
     }
 
-    override fun setWishlistMovie(movie: MovieNowPlayingEntity, state: Boolean) =
+    override fun setWatchlistMovie(movie: MovieNowPlayingEntity, state: Boolean) =
         appExecutors.diskIO().execute {
             localDataSource.setWishlistMovie(movie, state)
         }
@@ -381,7 +381,7 @@ class AppRepository(
         }.asLiveData()
     }
 
-    override fun getWishlistTvShow(): LiveData<PagedList<TvShowAiringEntity>> {
+    override fun getWatchlistTvShow(): LiveData<PagedList<TvShowAiringEntity>> {
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
             .setInitialLoadSizeHint(6)
@@ -390,7 +390,7 @@ class AppRepository(
         return LivePagedListBuilder(localDataSource.getWishlistTvShow(), config).build()
     }
 
-    override fun setWishlistTvShow(tv: TvShowAiringEntity, state: Boolean) =
+    override fun setWatchlistTvShow(tv: TvShowAiringEntity, state: Boolean) =
         appExecutors.diskIO().execute {
             localDataSource.setWishlistTvShow(tv, state)
         }

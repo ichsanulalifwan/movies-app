@@ -21,14 +21,14 @@ class DetailMovieViewModel(private val repository: AppRepository) : ViewModel() 
         this.movieId.value = movieId
     }
 
-    fun setMovieFavorite() {
+    fun setWatchlistMovie() {
         val movieResource = detailMovie.value
         if (movieResource != null) {
             val movie = movieResource.data
             if (movie != null) {
                 val movieEntity = movie.mMovie
                 val newState = !movieEntity.isWishlist
-                repository.setWishlistMovie(movieEntity, newState)
+                repository.setWatchlistMovie(movieEntity, newState)
             }
         }
     }

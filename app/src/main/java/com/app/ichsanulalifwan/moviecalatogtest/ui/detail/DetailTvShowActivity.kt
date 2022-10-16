@@ -101,7 +101,7 @@ class DetailTvShowActivity : AppCompatActivity() {
 
     private fun onWatchlistClicked(data: TvShowAiringEntity) {
         binding.btnWatchlistDetail.setOnClickListener {
-            viewModel.setTvFavorite()
+            viewModel.setWatchlistTv()
             if (!data.isWishlist) Toast.makeText(
                 this,
                 data.name + " " + "Added to Watchlist",

@@ -101,7 +101,7 @@ class DetailMovieActivity : AppCompatActivity() {
 
     private fun onWatchlistClicked(data: MovieNowPlayingEntity) {
         binding.btnWatchlistDetail.setOnClickListener {
-            viewModel.setMovieFavorite()
+            viewModel.setWatchlistMovie()
             if (!data.isWishlist) Toast.makeText(
                 this,
                 data.title + " " + "Added to Watchlist",
