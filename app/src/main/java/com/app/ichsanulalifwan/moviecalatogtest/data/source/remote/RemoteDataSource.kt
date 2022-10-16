@@ -230,6 +230,7 @@ class RemoteDataSource {
         @Volatile
         private var instance: RemoteDataSource? = null
 
+        // API KEY could moved to gradle file
         private const val API_KEY = "96b03abc6c7393c9a3ec84d63863f5f4"
         private const val TAG = "RemoteDataSource"
 
