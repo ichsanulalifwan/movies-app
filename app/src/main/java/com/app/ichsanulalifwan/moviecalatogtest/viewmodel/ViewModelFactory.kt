@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.app.ichsanulalifwan.moviecalatogtest.data.AppRepository
 import com.app.ichsanulalifwan.moviecalatogtest.di.Injection
+import com.app.ichsanulalifwan.moviecalatogtest.ui.detail.DetailMovieViewModel
+import com.app.ichsanulalifwan.moviecalatogtest.ui.detail.DetailTvShowViewModel
 import com.app.ichsanulalifwan.moviecalatogtest.ui.movie.MovieViewModel
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.TvShowViewModel
 import com.app.ichsanulalifwan.moviecalatogtest.ui.watchlist.WatchlistViewModel
@@ -24,13 +26,13 @@ class ViewModelFactory private constructor(private val repository: AppRepository
                 TvShowViewModel(repository) as T
             }
 
-//            modelClass.isAssignableFrom(DetailMovieViewModel::class.java) -> {
-//                DetailMovieViewModel(repository) as T
-//            }
-//
-//            modelClass.isAssignableFrom(DetailTvShowViewModel::class.java) -> {
-//                DetailTvShowViewModel(repository) as T
-//            }
+            modelClass.isAssignableFrom(DetailMovieViewModel::class.java) -> {
+                DetailMovieViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(DetailTvShowViewModel::class.java) -> {
+                DetailTvShowViewModel(repository) as T
+            }
 
             modelClass.isAssignableFrom(WatchlistViewModel::class.java) -> {
             WatchlistViewModel(repository) as T

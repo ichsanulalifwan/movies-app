@@ -1,6 +1,7 @@
 package com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.viewholder
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
@@ -11,6 +12,8 @@ import com.app.ichsanulalifwan.moviecalatogtest.R
 import com.app.ichsanulalifwan.moviecalatogtest.data.Resource
 import com.app.ichsanulalifwan.moviecalatogtest.data.source.local.entity.tvshow.TvShowAiringEntity
 import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewTvAiringTodayBinding
+import com.app.ichsanulalifwan.moviecalatogtest.ui.detail.DetailTvShowActivity
+import com.app.ichsanulalifwan.moviecalatogtest.ui.detail.DetailTvShowActivity.Companion.EXTRA_TV_ID
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.TvShowViewModel
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.adapter.TvShowAiringAdapter
 
@@ -69,9 +72,9 @@ class TvAiringTodayHolder(
     private fun onItemSelected() {
         tvShowAiringAdapter.setOnItemClickListener(object : TvShowAiringAdapter.OnItemClickListener {
             override fun onMoviesClicked(tvShow: TvShowAiringEntity) {
-//                val intent = Intent(context, DetailMovieActivity::class.java)
-//                intent.putExtra(EXTRA_MOVIE_ID, movies.movieId)
-//                startActivity(intent)
+                val intent = Intent(context, DetailTvShowActivity::class.java)
+                intent.putExtra(EXTRA_TV_ID, tvShow.tvId)
+                context.startActivity(intent)
             }
         })
     }
