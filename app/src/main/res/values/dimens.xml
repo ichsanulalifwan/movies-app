@@ -7,4 +7,5 @@
     <dimen name="card_elevation">4dp</dimen>
     <dimen name="corner_radius">8dp</dimen>
     <dimen name="margin_m">8dp</dimen>
+    <dimen name="margin_s">4dp</dimen>
 </resources>
