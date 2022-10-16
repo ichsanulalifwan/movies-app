@@ -31,7 +31,10 @@ class DetailTvShowActivity : AppCompatActivity() {
         binding = ActivityDetailTvShowBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            title = ""
+        }
 
         val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this, factory)[DetailTvShowViewModel::class.java]
