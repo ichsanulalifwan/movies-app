@@ -25,11 +25,13 @@
         <entry key="app/src/main/res/layout/fragment_watchlist_item.xml" value="0.1843597412109375" />
         <entry key="app/src/main/res/layout/item_genre.xml" value="0.8393942570340807" />
         <entry key="app/src/main/res/layout/item_large_list.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/item_large_placeholder.xml" value="0.2867965698242188" />
         <entry key="app/src/main/res/layout/item_list.xml" value="0.224676513671875" />
         <entry key="app/src/main/res/layout/item_watchlist.xml" value="0.23789581004918864" />
+        <entry key="app/src/main/res/layout/layout_shimmer_large_item.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/view_empty.xml" value="0.19995269775390628" />
         <entry key="app/src/main/res/layout/view_error.xml" value="0.20347747802734376" />
-        <entry key="app/src/main/res/layout/view_movie_now_playing.xml" value="0.101007080078125" />
+        <entry key="app/src/main/res/layout/view_movie_now_playing.xml" value="0.2704315185546875" />
         <entry key="app/src/main/res/layout/view_movie_popular.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_movie_top_rated.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_movie_upcoming.xml" value="0.1" />

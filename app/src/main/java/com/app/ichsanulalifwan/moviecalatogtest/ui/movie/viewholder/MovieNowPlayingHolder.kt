@@ -51,7 +51,8 @@ class MovieNowPlayingHolder(
                     }
                     is Resource.Error -> {
                         showLoading(false)
-                        binding.viewError.tvError.text = movie.message ?: context.getString(R.string.something_wrong)
+                        binding.viewError.tvError.text =
+                            movie.message ?: context.getString(R.string.something_wrong)
                         Toast.makeText(context, "Something Wrong", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -82,7 +83,7 @@ class MovieNowPlayingHolder(
     }
 
     private fun showLoading(state: Boolean) {
-        if (state) binding.progressBar.visibility = View.VISIBLE
-        else binding.progressBar.visibility = View.GONE
+        if (state) binding.containerShimmerMovieNow.shimmerMovieNow.visibility = View.VISIBLE
+        else binding.containerShimmerMovieNow.shimmerMovieNow.visibility = View.GONE
     }
 }

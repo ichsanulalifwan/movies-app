@@ -48,7 +48,8 @@ class MovieTopRatedHolder(
                     }
                     is Resource.Error -> {
                         showLoading(false)
-                        binding.viewError.tvError.text = movie.message ?: context.getString(R.string.something_wrong)
+                        binding.viewError.tvError.text =
+                            movie.message ?: context.getString(R.string.something_wrong)
                         Toast.makeText(context, "Something Wrong", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -77,7 +78,14 @@ class MovieTopRatedHolder(
     }
 
     private fun showLoading(state: Boolean) {
-        if (state) binding.progressBar.visibility = View.VISIBLE
-        else binding.progressBar.visibility = View.GONE
+        binding.run {
+            if (state) {
+                tvMovieTopRated.visibility = View.GONE
+                containerShimmerMoviePopular.shimmerSmallList.visibility = View.VISIBLE
+            } else {
+                tvMovieTopRated.visibility = View.VISIBLE
+                containerShimmerMoviePopular.shimmerSmallList.visibility = View.GONE
+            }
+        }
     }
 }
