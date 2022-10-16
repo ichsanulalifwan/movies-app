@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.app.ichsanulalifwan.moviecalatogtest.databinding.FragmentTvshowBinding
-import com.app.ichsanulalifwan.moviecalatogtest.databinding.ViewTvAiringTodayBinding
+import com.app.ichsanulalifwan.moviecalatogtest.databinding.*
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.adapter.TvShowViewAdapter
 import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.viewholder.TvAiringTodayHolder
+import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.viewholder.TvOnTheAirHolder
+import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.viewholder.TvPopularHolder
+import com.app.ichsanulalifwan.moviecalatogtest.ui.tvshow.viewholder.TvTopRatedHolder
 import com.app.ichsanulalifwan.moviecalatogtest.viewmodel.ViewModelFactory
 
 class TvShowFragment : Fragment() {
@@ -39,6 +41,30 @@ class TvShowFragment : Fragment() {
         val tvShowViews = listOf(
             TvAiringTodayHolder(
                 ViewTvAiringTodayBinding.inflate(
+                    LayoutInflater.from(requireContext()),
+                    binding.root,
+                    false
+                ).root,
+                viewLifecycleOwner
+            ),
+            TvOnTheAirHolder(
+                ViewTvOnTheAirBinding.inflate(
+                    LayoutInflater.from(requireContext()),
+                    binding.root,
+                    false
+                ).root,
+                viewLifecycleOwner
+            ),
+            TvPopularHolder(
+                ViewTvPopularBinding.inflate(
+                    LayoutInflater.from(requireContext()),
+                    binding.root,
+                    false
+                ).root,
+                viewLifecycleOwner
+            ),
+            TvTopRatedHolder(
+                ViewTvTopRatedBinding.inflate(
                     LayoutInflater.from(requireContext()),
                     binding.root,
                     false

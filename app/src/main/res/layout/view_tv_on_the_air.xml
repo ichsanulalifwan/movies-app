@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin_size"
         android:layout_marginTop="4dp"
-        android:text="@string/title_tvshow_airing_today"
+        android:text="@string/title_tvshow_on_the_air"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:fontFamily="@font/be_vietnam_bold"
